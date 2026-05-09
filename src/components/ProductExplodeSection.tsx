@@ -64,7 +64,7 @@ export default function ProductExplodeSection() {
       style={{
         background: '#FFFFFF',
         borderRadius: 'clamp(40px,5vw,60px) clamp(40px,5vw,60px) 0 0',
-        padding: 'clamp(80px,10vw,140px)',
+        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,140px)',
         minHeight: '100vh',
       }}
     >

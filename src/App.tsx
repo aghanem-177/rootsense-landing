@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import HeroSection from './components/HeroSection'
-import WhatsAppButton from './components/WhatsAppButton'
+import OrderButton from './components/OrderButton'
 
 // Lazy load sections below the fold
 const MarqueeSection = lazy(() => import('./components/MarqueeSection'))
@@ -11,7 +11,6 @@ const ServicesSection = lazy(() => import('./components/ServicesSection'))
 const ImpactSection = lazy(() => import('./components/ImpactSection'))
 const CompetitionSection = lazy(() => import('./components/CompetitionSection'))
 const TeamSection = lazy(() => import('./components/TeamSection'))
-const InvestSection = lazy(() => import('./components/InvestSection'))
 const FooterSection = lazy(() => import('./components/FooterSection'))
 
 function SectionFallback() {
@@ -59,15 +58,12 @@ function App() {
         {/* 9. Team */}
         <TeamSection />
 
-        {/* 10. Invest */}
-        <InvestSection />
-
-        {/* 11. Footer */}
+        {/* 10. Footer */}
         <FooterSection />
       </Suspense>
 
-      {/* Floating WhatsApp */}
-      <WhatsAppButton />
+      {/* Floating Order Button */}
+      <OrderButton />
     </div>
   )
 }

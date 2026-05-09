@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, Fragment } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 interface AnimatedTextProps {
@@ -13,7 +13,8 @@ export default function AnimatedText({ text, className = '' }: AnimatedTextProps
     offset: ['start 0.85', 'end 0.25'],
   })
 
-  const chars = text.split('')
+  const totalChars = text.length
+  const words = text.split(' ')
 
   return (
     <p
@@ -30,15 +31,26 @@ export default function AnimatedText({ text, className = '' }: AnimatedTextProps
         color: 'var(--text-primary)',
       }}
     >
-      {chars.map((char, i) => (
-        <AnimatedChar
-          key={i}
-          char={char}
-          index={i}
-          total={chars.length}
-          progress={scrollYProgress}
-        />
-      ))}
+      {words.map((word, wi) => {
+        // Calculate the global char index offset for this word
+        const charOffset = words.slice(0, wi).reduce((sum, w) => sum + w.length + 1, 0)
+        return (
+          <Fragment key={wi}>
+            <span style={{ whiteSpace: 'nowrap' }}>
+              {word.split('').map((char, ci) => (
+                <AnimatedChar
+                  key={ci}
+                  char={char}
+                  index={charOffset + ci}
+                  total={totalChars}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </span>
+            {wi < words.length - 1 && ' '}
+          </Fragment>
+        )
+      })}
     </p>
   )
 }
@@ -60,7 +72,7 @@ function AnimatedChar({
 
   return (
     <span style={{ position: 'relative', display: 'inline' }}>
-      <span style={{ visibility: 'hidden' }}>{char === ' ' ? ' ' : char}</span>
+      <span style={{ visibility: 'hidden' }}>{char}</span>
       <motion.span
         style={{
           position: 'absolute',
@@ -69,7 +81,7 @@ function AnimatedChar({
           opacity,
         }}
       >
-        {char === ' ' ? ' ' : char}
+        {char}
       </motion.span>
     </span>
   )

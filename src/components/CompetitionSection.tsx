@@ -11,7 +11,7 @@ const rootsenseFeatures = [
   'Water + salinity + pH diagnostics',
   'Built for MENA salt-affected soils',
   'Arabic instructions, local supply',
-  'Agri-shop + WhatsApp distribution',
+  'Online ordering + agri-shop distribution',
 ]
 
 export default function CompetitionSection() {
@@ -21,7 +21,7 @@ export default function CompetitionSection() {
       style={{
         background: 'var(--page-bg)',
         borderRadius: 'clamp(40px,5vw,60px) clamp(40px,5vw,60px) 0 0',
-        padding: 'clamp(80px,10vw,140px) 40px',
+        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,40px)',
         gap: 60,
       }}
     >
@@ -47,7 +47,7 @@ export default function CompetitionSection() {
       <div
         className="grid w-full"
         style={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
           gap: 24,
           maxWidth: 900,
         }}

@@ -24,30 +24,36 @@
   --olive-housing: #5A6B3A;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-html, body, #root {
-  background: var(--page-bg);
-  font-family: 'DM Sans', sans-serif;
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html, body, #root {
+    background: var(--page-bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer utilities {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
 
-.font-playfair {
-  font-family: 'Playfair Display', serif;
-}
-
-.font-dm {
-  font-family: 'DM Sans', sans-serif;
+  .font-dm {
+    font-family: 'DM Sans', sans-serif;
+  }
 }
 
 .hero-heading {

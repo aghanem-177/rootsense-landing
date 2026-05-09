@@ -15,7 +15,8 @@ export default function HowItWorksSection() {
       className="flex flex-col items-center"
       style={{
         background: '#FFFFFF',
-        padding: '0 40px clamp(40px,5vw,80px)',
+        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,40px) clamp(40px,5vw,80px)',
+        overflowX: 'clip',
       }}
     >
       <FadeIn>

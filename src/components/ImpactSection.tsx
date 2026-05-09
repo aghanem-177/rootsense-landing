@@ -43,7 +43,7 @@ export default function ImpactSection() {
       style={{
         background: 'var(--green-deep)',
         borderRadius: 'clamp(40px,5vw,60px) clamp(40px,5vw,60px) 0 0',
-        padding: 'clamp(80px,10vw,140px) 40px',
+        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,40px)',
         gap: 60,
       }}
     >

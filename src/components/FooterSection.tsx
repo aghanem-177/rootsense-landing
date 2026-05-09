@@ -3,18 +3,18 @@ export default function FooterSection() {
     <footer
       style={{
         background: 'var(--green-deep)',
-        padding: '80px 40px 40px',
+        padding: 'clamp(60px, 8vw, 80px) clamp(20px, 5vw, 40px) 40px',
       }}
     >
       <div
         className="grid gap-10 mx-auto"
         style={{
-          gridTemplateColumns: '2fr 1fr 1fr',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           maxWidth: 1100,
         }}
       >
         {/* Brand */}
-        <div>
+        <div style={{ gridColumn: 'span 1' }}>
           <div className="font-playfair font-black" style={{ fontSize: '1.8rem' }}>
             <span style={{ color: 'var(--brown-light)' }}>Root</span>
             <span style={{ color: '#6BB8FF' }}>Sense</span>
@@ -63,7 +63,7 @@ export default function FooterSection() {
           >
             Connect
           </h4>
-          {['WhatsApp', 'Instagram', 'TikTok', 'X (Twitter)'].map((c) => (
+          {['Instagram', 'TikTok', 'X (Twitter)'].map((c) => (
             <p
               key={c}
               className="font-dm mb-2.5 cursor-pointer transition-colors duration-200"
@@ -79,7 +79,7 @@ export default function FooterSection() {
 
       {/* Bottom Bar */}
       <div
-        className="flex flex-wrap justify-between items-center mx-auto mt-10 pt-6"
+        className="flex flex-wrap justify-between items-center gap-4 mx-auto mt-10 pt-6"
         style={{
           maxWidth: 1100,
           borderTop: '1px solid rgba(255,255,255,0.08)',
@@ -89,7 +89,7 @@ export default function FooterSection() {
           &copy; 2026 RootSense — INJAZ Company Program
         </p>
         <p className="font-dm" style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.75rem' }}>
-          Made in Egypt 🇪🇬
+          Made in Egypt
         </p>
       </div>
     </footer>

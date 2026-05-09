@@ -16,7 +16,7 @@ export default function TeamSection() {
       className="flex flex-col items-center"
       style={{
         background: 'var(--cream)',
-        padding: 'clamp(80px,10vw,140px) 40px',
+        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,40px)',
         gap: 60,
       }}
     >
