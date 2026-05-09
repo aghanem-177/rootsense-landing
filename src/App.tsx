@@ -1,121 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { lazy, Suspense } from 'react'
+import HeroSection from './components/HeroSection'
+import WhatsAppButton from './components/WhatsAppButton'
+
+// Lazy load sections below the fold
+const MarqueeSection = lazy(() => import('./components/MarqueeSection'))
+const ProblemSection = lazy(() => import('./components/ProblemSection'))
+const ProductExplodeSection = lazy(() => import('./components/ProductExplodeSection'))
+const HowItWorksSection = lazy(() => import('./components/HowItWorksSection'))
+const ServicesSection = lazy(() => import('./components/ServicesSection'))
+const ImpactSection = lazy(() => import('./components/ImpactSection'))
+const CompetitionSection = lazy(() => import('./components/CompetitionSection'))
+const TeamSection = lazy(() => import('./components/TeamSection'))
+const InvestSection = lazy(() => import('./components/InvestSection'))
+const FooterSection = lazy(() => import('./components/FooterSection'))
+
+function SectionFallback() {
+  return (
+    <div className="flex items-center justify-center py-40">
+      <div
+        className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin"
+        style={{ borderColor: 'var(--green-mid)', borderTopColor: 'transparent' }}
+      />
+    </div>
+  )
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div style={{ overflowX: 'clip' }}>
+      {/* Film Grain Overlay */}
+      <div className="film-grain" />
 
-      <div className="ticks"></div>
+      {/* 1. Hero */}
+      <HeroSection />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <Suspense fallback={<SectionFallback />}>
+        {/* 2. Marquee */}
+        <MarqueeSection />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        {/* 3. Problem */}
+        <ProblemSection />
+
+        {/* 4. Product Explode (Centerpiece) */}
+        <ProductExplodeSection />
+
+        {/* 5. How It Works */}
+        <HowItWorksSection />
+
+        {/* 6. Services */}
+        <ServicesSection />
+
+        {/* 7. Impact */}
+        <ImpactSection />
+
+        {/* 8. Competition */}
+        <CompetitionSection />
+
+        {/* 9. Team */}
+        <TeamSection />
+
+        {/* 10. Invest */}
+        <InvestSection />
+
+        {/* 11. Footer */}
+        <FooterSection />
+      </Suspense>
+
+      {/* Floating WhatsApp */}
+      <WhatsAppButton />
+    </div>
   )
 }
 
