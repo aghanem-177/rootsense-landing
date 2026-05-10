@@ -6,6 +6,7 @@ import OrderButton from './components/OrderButton'
 const MarqueeSection = lazy(() => import('./components/MarqueeSection'))
 const ProblemSection = lazy(() => import('./components/ProblemSection'))
 const ProductExplodeSection = lazy(() => import('./components/ProductExplodeSection'))
+const PricingSection = lazy(() => import('./components/PricingSection'))
 const HowItWorksSection = lazy(() => import('./components/HowItWorksSection'))
 const ServicesSection = lazy(() => import('./components/ServicesSection'))
 const ImpactSection = lazy(() => import('./components/ImpactSection'))
@@ -43,7 +44,10 @@ function App() {
         {/* 4. Product Explode (Centerpiece) */}
         <ProductExplodeSection />
 
-        {/* 5. How It Works */}
+        {/* 5. Pricing */}
+        <PricingSection />
+
+        {/* 6. How It Works */}
         <HowItWorksSection />
 
         {/* 6. Services */}

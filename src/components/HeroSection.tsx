@@ -1,14 +1,10 @@
-import { useState, useEffect, Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Environment, ContactShadows } from '@react-three/drei'
-import { ACESFilmicToneMapping } from 'three'
+import { useState, useEffect } from 'react'
 import FadeIn from './FadeIn'
-import Magnet from './Magnet'
-import RootSenseStake from './three/RootSenseStake'
 
 const navLinks = [
   { label: 'Problem', href: '#problem' },
   { label: 'Product', href: '#product' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Impact', href: '#impact' },
   { label: 'Team', href: '#team' },
@@ -81,7 +77,7 @@ export default function HeroSection() {
             <span style={{ color: 'var(--blue-water)' }}>Sense</span>
           </a>
 
-          {/* Desktop Nav Links — pill-shaped container */}
+          {/* Desktop Nav Links */}
           <div
             className="hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full"
             style={{
@@ -93,7 +89,7 @@ export default function HeroSection() {
               <a
                 key={link.label}
                 href={link.href}
-                className="relative font-dm font-medium uppercase tracking-wider text-[0.75rem] lg:text-[0.8rem] px-4 py-2 rounded-full transition-all duration-200 cursor-pointer hover:bg-[rgba(0,0,0,0.04)]"
+                className="relative font-dm font-medium uppercase tracking-wider text-[0.72rem] lg:text-[0.78rem] px-3.5 py-2 rounded-full transition-all duration-200 cursor-pointer hover:bg-[rgba(0,0,0,0.04)]"
                 style={{ color: 'var(--text-tertiary)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--text-primary)'
@@ -109,7 +105,7 @@ export default function HeroSection() {
 
           {/* Order CTA in nav */}
           <a
-            href="#product"
+            href="#pricing"
             className="hidden md:flex items-center gap-2 rounded-full font-dm font-medium uppercase tracking-wider text-[0.75rem] px-5 py-2.5 cursor-pointer transition-all duration-200"
             style={{
               background: 'var(--green-mid)',
@@ -143,7 +139,7 @@ export default function HeroSection() {
         <div
           className="md:hidden flex flex-col items-center gap-6 overflow-hidden transition-all duration-400"
           style={{
-            maxHeight: menuOpen ? 400 : 0,
+            maxHeight: menuOpen ? 500 : 0,
             paddingTop: menuOpen ? 24 : 0,
             paddingBottom: menuOpen ? 32 : 0,
             background: 'rgba(255,255,255,0.97)',
@@ -163,7 +159,7 @@ export default function HeroSection() {
             </a>
           ))}
           <a
-            href="#product"
+            href="#pricing"
             className="rounded-full font-dm font-medium uppercase tracking-wider text-sm px-8 py-3 cursor-pointer"
             style={{ background: 'var(--green-mid)', color: '#FFFFFF' }}
             onClick={() => setMenuOpen(false)}
@@ -173,13 +169,13 @@ export default function HeroSection() {
         </div>
       </nav>
 
-      {/* ═══ HERO CONTENT — Two columns: Text LEFT, Product RIGHT ═══ */}
+      {/* ═══ HERO CONTENT ═══ */}
       <div className="flex-1 flex items-center justify-center relative z-[5] px-8 md:px-12 lg:px-16 pt-24 pb-16 max-w-[1440px] mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-4 w-full">
           {/* LEFT — Text Content */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:w-1/2">
             {/* Tag */}
-            <FadeIn delay={0} y={-20}>
+            <FadeIn delay={0} y={-20} immediate>
               <p
                 className="uppercase font-dm font-semibold tracking-[0.3em]"
                 style={{ color: 'var(--green-mid)', fontSize: '0.72rem' }}
@@ -189,7 +185,7 @@ export default function HeroSection() {
             </FadeIn>
 
             {/* Hero Heading */}
-            <FadeIn delay={0.15} y={40}>
+            <FadeIn delay={0.15} y={40} immediate>
               <h1
                 className="hero-heading font-playfair font-black uppercase tracking-tight leading-[0.9]"
                 style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', marginTop: '1rem' }}
@@ -199,7 +195,7 @@ export default function HeroSection() {
             </FadeIn>
 
             {/* Subtitle */}
-            <FadeIn delay={0.35} y={20}>
+            <FadeIn delay={0.35} y={20} immediate>
               <p
                 className="font-dm font-light uppercase tracking-wide leading-relaxed"
                 style={{
@@ -214,10 +210,10 @@ export default function HeroSection() {
             </FadeIn>
 
             {/* CTA Buttons */}
-            <FadeIn delay={0.5} y={20}>
+            <FadeIn delay={0.5} y={20} immediate>
               <div className="flex flex-wrap items-center gap-4 mt-8">
                 <a
-                  href="#product"
+                  href="#pricing"
                   className="rounded-full font-dm font-medium uppercase tracking-widest text-sm px-8 py-3.5 cursor-pointer transition-all duration-200"
                   style={{
                     background: 'var(--green-mid)',
@@ -262,7 +258,7 @@ export default function HeroSection() {
             </FadeIn>
 
             {/* Stats bar */}
-            <FadeIn delay={0.6} y={15}>
+            <FadeIn delay={0.6} y={15} immediate>
               <div className="flex items-center gap-8 mt-10">
                 <div>
                   <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>74%</p>
@@ -282,42 +278,19 @@ export default function HeroSection() {
             </FadeIn>
           </div>
 
-          {/* RIGHT — 3D Product (NO overlap with text) */}
+          {/* RIGHT — Product Photo */}
           <div className="lg:w-1/2 flex items-center justify-center">
-            <FadeIn delay={0.5} y={30}>
-              <Magnet padding={100} strength={4} className="w-[300px] h-[380px] sm:w-[380px] sm:h-[460px] md:w-[440px] md:h-[520px] lg:w-[500px] lg:h-[580px]">
-                <Suspense
-                  fallback={
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: 'var(--green-mid)', borderTopColor: 'transparent' }} />
-                    </div>
-                  }
-                >
-                  <Canvas
-                    gl={{
-                      antialias: true,
-                      alpha: true,
-                      toneMapping: ACESFilmicToneMapping,
-                      toneMappingExposure: 1.1,
-                    }}
-                    dpr={[1, 2]}
-                    camera={{ position: [3, 2, 5], fov: 45 }}
-                    style={{ width: '100%', height: '100%' }}
-                  >
-                    <ambientLight intensity={0.6} />
-                    <directionalLight position={[5, 8, 5]} intensity={1.0} castShadow />
-                    <Environment preset="studio" />
-                    <RootSenseStake autoRotate rotateSpeed={0.5} />
-                    <ContactShadows
-                      position={[0, -3, 0]}
-                      opacity={0.15}
-                      blur={2.5}
-                      far={6}
-                      color="#B0A898"
-                    />
-                  </Canvas>
-                </Suspense>
-              </Magnet>
+            <FadeIn delay={0.4} y={30} immediate>
+              <div className="relative">
+                <img
+                  src="/product.png"
+                  alt="RootSense Smart Irrigation Stake — ceramic cone, stainless steel shaft, sensor head with LCD, brass fittings"
+                  className="w-[320px] sm:w-[400px] md:w-[480px] lg:w-[540px] h-auto object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105 hover:rotate-1"
+                  style={{
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+                  }}
+                />
+              </div>
             </FadeIn>
           </div>
         </div>
