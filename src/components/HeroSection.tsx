@@ -88,17 +88,11 @@ export default function HeroSection() {
         <div className="flex items-center justify-between px-8 md:px-12 lg:px-16 py-5 max-w-[1440px] mx-auto">
           {/* Logo */}
           <a href="#" className="cursor-pointer select-none flex items-center gap-2.5">
-            {/* Logo Icon — root/leaf mark */}
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              {/* Leaf shape */}
-              <path d="M16 4C16 4 6 10 6 18c0 5.5 4.5 10 10 10s10-4.5 10-10C26 10 16 4 16 4z" fill="var(--green-mid)" opacity="0.15" />
-              <path d="M16 4C16 4 6 10 6 18c0 5.5 4.5 10 10 10s10-4.5 10-10C26 10 16 4 16 4z" stroke="var(--green-mid)" strokeWidth="1.5" fill="none" />
-              {/* Root vein */}
-              <path d="M16 8v16M16 14l-4 4M16 18l3 3" stroke="var(--green-mid)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              {/* Water drop */}
-              <circle cx="22" cy="10" r="3" fill="var(--blue-water)" opacity="0.25" />
-              <path d="M22 8c0 0-2 2.5-2 3.5a2 2 0 004 0c0-1-2-3.5-2-3.5z" fill="var(--blue-water)" opacity="0.6" />
-            </svg>
+            <img
+              src="/logo.png"
+              alt="RootSense logo"
+              className="h-9 w-auto object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="font-playfair font-black text-[1.15rem] tracking-tight" style={{ color: 'var(--green-deep)' }}>
                 RootSense
@@ -135,9 +129,9 @@ export default function HeroSection() {
             ))}
           </div>
 
-          {/* Order CTA in nav */}
+          {/* Contact CTA in nav */}
           <a
-            href="#pricing"
+            href="mailto:teamrootsense@gmail.com"
             className="hidden md:flex items-center gap-2 rounded-full font-dm font-medium uppercase tracking-wider text-[0.75rem] px-5 py-2.5 cursor-pointer transition-all duration-200"
             style={{
               background: 'var(--green-mid)',
@@ -152,7 +146,7 @@ export default function HeroSection() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
-            Order Now
+            Contact Us
           </a>
 
           {/* Mobile Hamburger */}
@@ -191,12 +185,12 @@ export default function HeroSection() {
             </a>
           ))}
           <a
-            href="#pricing"
+            href="mailto:teamrootsense@gmail.com"
             className="rounded-full font-dm font-medium uppercase tracking-wider text-sm px-8 py-3 cursor-pointer"
             style={{ background: 'var(--green-mid)', color: '#FFFFFF' }}
             onClick={() => setMenuOpen(false)}
           >
-            Order Now
+            Contact Us
           </a>
         </div>
       </nav>
@@ -245,7 +239,7 @@ export default function HeroSection() {
             <FadeIn delay={0.5} y={20} immediate>
               <div className="flex flex-wrap items-center gap-4 mt-8">
                 <a
-                  href="#pricing"
+                  href="mailto:teamrootsense@gmail.com"
                   className="rounded-full font-dm font-medium uppercase tracking-widest text-sm px-8 py-3.5 cursor-pointer transition-all duration-200"
                   style={{
                     background: 'var(--green-mid)',
@@ -263,7 +257,7 @@ export default function HeroSection() {
                     e.currentTarget.style.boxShadow = '0 4px 20px rgba(45,90,45,0.25)'
                   }}
                 >
-                  Order Now
+                  Contact Us
                 </a>
                 <a
                   href="#how-it-works"

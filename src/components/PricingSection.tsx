@@ -4,7 +4,7 @@ import FadeIn from './FadeIn'
 const plans = [
   {
     name: 'Solo Sense',
-    price: '300–400',
+    price: '~1,400',
     unit: 'EGP',
     period: 'per stake',
     description:
@@ -17,7 +17,7 @@ const plans = [
       'Universal brass fittings',
       'IP67 waterproof rated',
     ],
-    cta: 'Order Solo Sense',
+    cta: 'Contact Us',
     popular: false,
     accent: 'var(--green-mid)',
     bg: 'var(--card-bg)',
@@ -26,11 +26,11 @@ const plans = [
     name: 'Drip Sense Kit',
     price: '6,500–8,500',
     unit: 'EGP',
-    period: 'complete kit',
+    period: 'pack of 4–5 stakes',
     description:
-      'Full greenhouse or small-farm package — multiple stakes, drip integration hub, and water distribution manifold. Built for commercial growers.',
+      'Full greenhouse or small-farm package — 4–5 stakes with drip integration hub and water distribution manifold. Built for commercial growers.',
     features: [
-      'Multiple RootSense stakes',
+      '4–5 RootSense stakes included',
       'Drip-line integration hub',
       'Water distribution manifold',
       'All brass fittings & tubing',
@@ -38,7 +38,7 @@ const plans = [
       'Scalable to any plot size',
       'Priority support & setup guide',
     ],
-    cta: 'Order Drip Sense',
+    cta: 'Contact Us',
     popular: true,
     accent: 'var(--green-bright)',
     bg: 'var(--green-deep)',
@@ -239,7 +239,7 @@ export default function PricingSection() {
 
               {/* CTA Button */}
               <a
-                href="#pricing"
+                href="mailto:teamrootsense@gmail.com"
                 className="block text-center rounded-full font-dm font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer"
                 style={{
                   fontSize: '0.8rem',
@@ -269,6 +269,28 @@ export default function PricingSection() {
           </FadeIn>
         ))}
       </div>
+
+      {/* Feddan callout */}
+      <FadeIn delay={0.45}>
+        <div
+          className="flex items-center gap-3 rounded-2xl"
+          style={{
+            background: 'var(--green-soft)',
+            border: '1px solid rgba(45,90,45,0.12)',
+            padding: '16px 28px',
+            maxWidth: 520,
+          }}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          <p className="font-dm" style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6 }}>
+            On average, only <strong style={{ color: 'var(--green-mid)' }}>~4 stakes</strong> are needed per feddan of agricultural land.
+          </p>
+        </div>
+      </FadeIn>
 
       {/* Bottom trust bar */}
       <FadeIn delay={0.5}>
