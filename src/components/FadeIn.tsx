@@ -41,7 +41,7 @@ export default function FadeIn({
     <motion.div
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '50px', amount: 0 }}
+      viewport={{ once: false, margin: '50px', amount: 0 }}
       transition={transition}
       className={className}
       style={{ willChange: 'transform' }}

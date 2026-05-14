@@ -1,51 +1,5 @@
 import FadeIn from './FadeIn'
 
-/* ─── SDG SVG Icons ─── */
-function SdgIcon2() {
-  // SDG 2: Zero Hunger — bowl with steam
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 17h18v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1z" fill="#DDA63A" opacity="0.2" stroke="#DDA63A" strokeWidth="1.5" />
-      <path d="M3 17c0-4 4-7 9-7s9 3 9 7" stroke="#DDA63A" strokeWidth="1.5" fill="none" />
-      <path d="M8 7c0-1 .5-2 1-2.5" stroke="#DDA63A" strokeWidth="1.5" />
-      <path d="M12 6c0-1 .5-2.5 1-3" stroke="#DDA63A" strokeWidth="1.5" />
-      <path d="M16 7c0-1 .5-2 1-2.5" stroke="#DDA63A" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-function SdgIcon6() {
-  // SDG 6: Clean Water — water drop
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" fill="#26BDE2" opacity="0.2" stroke="#26BDE2" strokeWidth="1.5" />
-      <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#26BDE2" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-function SdgIcon12() {
-  // SDG 12: Responsible Consumption — infinity/cycle
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z" stroke="#BF8B2E" strokeWidth="1.5" />
-      <path d="M18.178 8c5.096 0 5.096 8 0 8" fill="#BF8B2E" opacity="0.15" />
-    </svg>
-  )
-}
-
-function SdgIcon13() {
-  // SDG 13: Climate Action — globe with leaf
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="9" fill="#3F7E44" opacity="0.15" stroke="#3F7E44" strokeWidth="1.5" />
-      <path d="M12 3c-1 3-3 5-6 6" stroke="#3F7E44" strokeWidth="1.5" />
-      <path d="M12 21c2-3 4-5 7-6" stroke="#3F7E44" strokeWidth="1.5" />
-      <path d="M8 12c2-3 5-4 8-3" stroke="#3F7E44" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
 const stats = [
   {
     number: '74%',
@@ -53,7 +7,7 @@ const stats = [
     desc: 'Moisture-based irrigation efficiency vs. fixed schedules',
     sdg: 'SDG 6',
     sdgFull: 'Clean Water & Sanitation',
-    icon: <SdgIcon6 />,
+    sdgIcon: '/sdg-6.jpg',
     sdgBg: 'rgba(38,189,226,0.15)',
     sdgColor: '#26BDE2',
     barWidth: '74%',
@@ -64,7 +18,7 @@ const stats = [
     desc: 'Preventing salinity-driven crop loss on salt-affected land',
     sdg: 'SDG 2',
     sdgFull: 'Zero Hunger',
-    icon: <SdgIcon2 />,
+    sdgIcon: '/sdg-2.jpg',
     sdgBg: 'rgba(221,166,58,0.15)',
     sdgColor: '#DDA63A',
     barWidth: '40%',
@@ -75,7 +29,7 @@ const stats = [
     desc: "Salt-affected irrigated land across Egypt's Delta region",
     sdg: 'SDG 13',
     sdgFull: 'Climate Action',
-    icon: <SdgIcon13 />,
+    sdgIcon: '/sdg-13.jpg',
     sdgBg: 'rgba(63,126,68,0.15)',
     sdgColor: '#3F7E44',
     barWidth: '35%',
@@ -86,7 +40,7 @@ const stats = [
     desc: 'Annual yield protection value from real-time soil monitoring',
     sdg: 'SDG 12',
     sdgFull: 'Responsible Consumption',
-    icon: <SdgIcon12 />,
+    sdgIcon: '/sdg-12.jpg',
     sdgBg: 'rgba(191,139,46,0.15)',
     sdgColor: '#BF8B2E',
     barWidth: '60%',
@@ -123,43 +77,33 @@ export default function ImpactSection() {
         </h2>
       </FadeIn>
 
-      {/* SDG Badge Row */}
+      {/* SDG Icon Row — official UN icons */}
       <FadeIn delay={0.15}>
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           {[
-            { num: 2, label: 'Zero Hunger', color: '#DDA63A' },
-            { num: 6, label: 'Clean Water', color: '#26BDE2' },
-            { num: 12, label: 'Responsible Consumption', color: '#BF8B2E' },
-            { num: 13, label: 'Climate Action', color: '#3F7E44' },
+            { num: 2, src: '/sdg-2.jpg', label: 'Zero Hunger' },
+            { num: 6, src: '/sdg-6.jpg', label: 'Clean Water' },
+            { num: 12, src: '/sdg-12.jpg', label: 'Responsible Consumption' },
+            { num: 13, src: '/sdg-13.jpg', label: 'Climate Action' },
           ].map((sdg) => (
             <div
               key={sdg.num}
-              className="flex items-center gap-2 rounded-full"
-              style={{
-                background: `${sdg.color}20`,
-                border: `1px solid ${sdg.color}40`,
-                padding: '6px 14px',
-              }}
+              className="flex flex-col items-center gap-2 transition-transform duration-200 cursor-default"
+              style={{ transform: 'scale(1)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.08)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)' }}
             >
-              <span
-                className="font-dm font-bold"
+              <img
+                src={sdg.src}
+                alt={`SDG ${sdg.num}: ${sdg.label}`}
                 style={{
-                  fontSize: '0.72rem',
-                  color: sdg.color,
-                  width: 22,
-                  height: 22,
-                  borderRadius: '50%',
-                  background: `${sdg.color}30`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  width: 72,
+                  height: 72,
+                  borderRadius: 10,
+                  objectFit: 'cover',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
                 }}
-              >
-                {sdg.num}
-              </span>
-              <span className="font-dm font-medium" style={{ fontSize: '0.72rem', color: sdg.color }}>
-                {sdg.label}
-              </span>
+              />
             </div>
           ))}
         </div>
@@ -193,8 +137,19 @@ export default function ImpactSection() {
                 e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
-              {/* SDG Icon */}
-              <div className="mb-4">{s.icon}</div>
+              {/* SDG Icon — real image */}
+              <img
+                src={s.sdgIcon}
+                alt={s.sdg}
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 8,
+                  objectFit: 'cover',
+                  marginBottom: 16,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                }}
+              />
 
               {/* Number */}
               <p

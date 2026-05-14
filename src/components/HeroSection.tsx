@@ -10,11 +10,12 @@ const navLinks = [
   { label: 'Team', href: '#team' },
 ]
 
-const waterDrops = Array.from({ length: 8 }, (_, i) => ({
-  left: `${10 + i * 11}%`,
-  delay: `${i * 0.7}s`,
-  duration: `${3 + (i % 3)}s`,
-  size: 8 + (i % 3) * 2,
+const waterDrops = Array.from({ length: 6 }, (_, i) => ({
+  left: `${12 + i * 15}%`,
+  delay: `${i * 1.2}s`,
+  duration: `${4 + (i % 3) * 1.5}s`,
+  size: 6 + (i % 3) * 3,
+  opacity: 0.06 + (i % 3) * 0.03,
 }))
 
 export default function HeroSection() {
@@ -37,25 +38,39 @@ export default function HeroSection() {
         overflowX: 'clip',
       }}
     >
-      {/* Water Drop Particles */}
+      {/* Water Drop Particles — realistic with gradients */}
+      <svg width="0" height="0" style={{ position: 'absolute' }}>
+        <defs>
+          <linearGradient id="dropGrad" x1="0" y1="0" x2="0.3" y2="1">
+            <stop offset="0%" stopColor="#a8d4f0" stopOpacity="0.6" />
+            <stop offset="40%" stopColor="#5ba8d9" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#3B7DD8" stopOpacity="0.15" />
+          </linearGradient>
+          <radialGradient id="dropHighlight" cx="0.35" cy="0.3" r="0.5">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
       {waterDrops.map((drop, i) => (
         <svg
           key={i}
-          viewBox="0 0 12 16"
+          viewBox="0 0 20 28"
           style={{
             position: 'absolute',
             left: drop.left,
-            top: '10%',
+            top: '8%',
             width: drop.size,
-            height: drop.size * 1.3,
-            fill: 'var(--blue-water)',
-            opacity: 0.12,
+            height: drop.size * 1.4,
+            opacity: drop.opacity,
             pointerEvents: 'none',
             animation: `drip ${drop.duration} ${drop.delay} ease-in infinite`,
             zIndex: 1,
+            filter: 'blur(0.3px)',
           }}
         >
-          <path d="M6 0C6 0 0 8 0 11a6 6 0 0012 0C12 8 6 0 6 0z" />
+          <path d="M10 0C10 0 0 13 0 18a10 10 0 0020 0C20 13 10 0 10 0z" fill="url(#dropGrad)" />
+          <path d="M10 0C10 0 0 13 0 18a10 10 0 0020 0C20 13 10 0 10 0z" fill="url(#dropHighlight)" />
         </svg>
       ))}
 
@@ -72,9 +87,26 @@ export default function HeroSection() {
       >
         <div className="flex items-center justify-between px-8 md:px-12 lg:px-16 py-5 max-w-[1440px] mx-auto">
           {/* Logo */}
-          <a href="#" className="font-playfair font-black text-[1.6rem] cursor-pointer select-none flex items-center gap-0.5">
-            <span style={{ color: 'var(--brown-mid)' }}>Root</span>
-            <span style={{ color: 'var(--blue-water)' }}>Sense</span>
+          <a href="#" className="cursor-pointer select-none flex items-center gap-2.5">
+            {/* Logo Icon — root/leaf mark */}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              {/* Leaf shape */}
+              <path d="M16 4C16 4 6 10 6 18c0 5.5 4.5 10 10 10s10-4.5 10-10C26 10 16 4 16 4z" fill="var(--green-mid)" opacity="0.15" />
+              <path d="M16 4C16 4 6 10 6 18c0 5.5 4.5 10 10 10s10-4.5 10-10C26 10 16 4 16 4z" stroke="var(--green-mid)" strokeWidth="1.5" fill="none" />
+              {/* Root vein */}
+              <path d="M16 8v16M16 14l-4 4M16 18l3 3" stroke="var(--green-mid)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Water drop */}
+              <circle cx="22" cy="10" r="3" fill="var(--blue-water)" opacity="0.25" />
+              <path d="M22 8c0 0-2 2.5-2 3.5a2 2 0 004 0c0-1-2-3.5-2-3.5z" fill="var(--blue-water)" opacity="0.6" />
+            </svg>
+            <div className="flex flex-col leading-none">
+              <span className="font-playfair font-black text-[1.15rem] tracking-tight" style={{ color: 'var(--green-deep)' }}>
+                RootSense
+              </span>
+              <span className="font-dm uppercase text-[0.5rem] tracking-[0.25em] font-medium" style={{ color: 'var(--text-tertiary)' }}>
+                Smart Irrigation
+              </span>
+            </div>
           </a>
 
           {/* Desktop Nav Links */}
@@ -283,11 +315,11 @@ export default function HeroSection() {
             <FadeIn delay={0.4} y={30} immediate>
               <div className="relative">
                 <img
-                  src="/product.png"
+                  src="/product-nobg.png"
                   alt="RootSense Smart Irrigation Stake — ceramic cone, stainless steel shaft, sensor head with LCD, brass fittings"
-                  className="w-[320px] sm:w-[400px] md:w-[480px] lg:w-[540px] h-auto object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105 hover:rotate-1"
+                  className="w-[320px] sm:w-[400px] md:w-[480px] lg:w-[540px] h-auto object-contain transition-transform duration-700 hover:scale-105 hover:rotate-1"
                   style={{
-                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.08))',
                   }}
                 />
               </div>
