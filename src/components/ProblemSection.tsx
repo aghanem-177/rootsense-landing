@@ -101,6 +101,24 @@ export default function ProblemSection() {
           maxWidth: 1100,
         }}
       >
+        {/* $300M Market Callout */}
+        <FadeIn delay={0.15} className="col-span-full">
+          <div
+            className="flex items-center gap-4 rounded-2xl mx-auto"
+            style={{
+              background: 'var(--brown-soft)',
+              border: '1px solid rgba(184,92,56,0.12)',
+              padding: '18px 28px',
+              maxWidth: 600,
+            }}
+          >
+            <span className="font-playfair font-black text-2xl" style={{ color: 'var(--brown-mid)', whiteSpace: 'nowrap' }}>$300M</span>
+            <p className="font-dm" style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.5 }}>
+              Egypt's irrigation market — the problem is massive, the opportunity is real.
+            </p>
+          </div>
+        </FadeIn>
+
         {problems.map((p, i) => (
           <FadeIn key={i} delay={0.2 + i * 0.15} y={50}>
             <div

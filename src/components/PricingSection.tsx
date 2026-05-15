@@ -11,10 +11,10 @@ const plans = [
       'One smart irrigation stake for home gardens, balcony planters, or single-pot use. Everything you need to stop guessing.',
     features: [
       'Ceramic auto-irrigation cone',
-      'pH, moisture & salinity sensors',
-      'Built-in LCD dashboard',
+      '4-in-1 sensors (pH, salinity, temp, wind)',
+      'Dual LCD screens (soil + wind)',
       'Solar-charged battery (12+ months)',
-      'Universal brass fittings',
+      'Built-in anemometer',
       'IP67 waterproof rated',
     ],
     cta: 'Contact Us',
@@ -309,7 +309,7 @@ export default function PricingSection() {
               <polyline points="12 6 12 12 16 14" />
             </svg>
             <span className="font-dm" style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem' }}>
-              12+ Month Battery
+              Solar-Powered
             </span>
           </div>
           <div className="flex items-center gap-2">

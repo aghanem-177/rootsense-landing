@@ -231,7 +231,7 @@ export default function HeroSection() {
                   marginTop: '1.5rem',
                 }}
               >
-                Know when to water. Know when water isn't the answer.
+                Solar-powered soil intelligence. Know when to water — and when water isn't the answer.
               </p>
             </FadeIn>
 
@@ -292,7 +292,7 @@ export default function HeroSection() {
                 </div>
                 <div style={{ width: 1, height: 36, background: 'var(--sand)' }} />
                 <div>
-                  <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>3-in-1</p>
+                  <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>4-in-1</p>
                   <p className="font-dm text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Sensors</p>
                 </div>
                 <div style={{ width: 1, height: 36, background: 'var(--sand)' }} />

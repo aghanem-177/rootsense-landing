@@ -73,7 +73,7 @@ export default function FooterSection() {
               maxWidth: 340,
             }}
           >
-            Helping farmers know not only when to water, but when water may not be the real solution. Built in Egypt for Egyptian soil.
+            Solar-powered smart irrigation — helping farmers know not only when to water, but when water may not be the real solution. Built in Egypt for Egyptian soil.
           </p>
         </div>
 

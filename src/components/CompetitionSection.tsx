@@ -8,7 +8,7 @@ const blumatFeatures = [
 ]
 
 const rootsenseFeatures = [
-  'Water + salinity + pH diagnostics',
+  'Water + salinity + pH + wind speed (4-in-1)',
   'Built for MENA salt-affected soils',
   'Arabic instructions, local supply',
   'Online ordering + agri-shop distribution',
@@ -104,7 +104,7 @@ export default function CompetitionSection() {
               RootSense
             </h3>
             <p className="font-dm mt-1 mb-6" style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.8rem' }}>
-              Egypt &bull; 300–400 EGP &bull; MENA agriculture
+              Egypt &bull; ~1,400 EGP &bull; MENA agriculture
             </p>
             <div className="flex flex-col gap-3">
               {rootsenseFeatures.map((f, i) => (

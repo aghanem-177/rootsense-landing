@@ -75,7 +75,7 @@ export default function HowItWorksSection() {
 
       {/* Animated Description */}
       <AnimatedText
-        text="RootSense is a smart irrigation stake pushed into the ground next to a plant. The ceramic cone automatically releases water when soil dries and stops when wet — using soil water tension. The electronic sensor head adds real-time pH, salinity, and moisture readings on a built-in LCD. No app needed. The answer is right on the stake."
+        text="RootSense is a solar-powered smart irrigation stake pushed into the ground next to a plant. The ceramic cone automatically releases water when soil dries and stops when wet — using soil water tension. The electronic sensor head adds real-time pH, salinity, moisture, and wind speed readings on dual built-in LCDs. Fully solar-charged, no batteries to replace. No app needed. The answer is right on the stake."
         className="px-4"
       />
     </section>

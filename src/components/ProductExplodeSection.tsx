@@ -9,60 +9,80 @@ const parts = [
     title: 'Assembled View',
     subtitle: 'The Complete RootSense Stake',
     description:
-      'A single electronic smart irrigation stake that combines automatic water delivery with real-time soil diagnostics. Push it into the ground, connect your water line, and start growing smarter. ~30 cm total length.',
-    spec: 'Weight: ~350g | Length: ~30cm | IP67 waterproof',
+      'A 4-in-1 smart irrigation stake combining soil diagnostics, wind monitoring, solar charging, and automatic water delivery. Push it into the ground and start growing smarter — addressing Egypt\'s $300M irrigation market.',
+    spec: 'Weight: ~380g | Length: ~30cm | Solar-powered | 4-in-1 sensors',
     color: 'var(--green-mid)',
     labelPos: null,
+  },
+  {
+    id: 'anemometer',
+    title: 'Anemometer',
+    subtitle: 'Wind Speed Monitoring',
+    description:
+      'The fan-blade anemometer at the top measures real-time wind speed, helping farmers understand evapotranspiration rates. Higher wind means faster soil drying — so you know when crops need extra attention.',
+    spec: 'Range: 0–30 m/s | Accuracy: ±0.3 m/s | Updates: every 30s',
+    color: '#4A4A4A',
+    labelPos: { x: 48, y: 4, anchor: 'right' as const },
+  },
+  {
+    id: 'solar',
+    title: 'Solar Panels',
+    subtitle: 'Self-Sustaining Power',
+    description:
+      'Two high-efficiency monocrystalline solar panels continuously charge the internal battery. No wiring, no battery replacements — the stake powers itself indefinitely under normal daylight conditions.',
+    spec: '2× monocrystalline cells | Output: 5V | Battery life: 12+ months',
+    color: '#2A4A7A',
+    labelPos: { x: 51, y: 15, anchor: 'right' as const },
+  },
+  {
+    id: 'soil-screen',
+    title: 'Soil Reading Screen',
+    subtitle: 'Real-Time Soil Intelligence',
+    description:
+      'The circular LCD displays live soil diagnostics: pH level, salinity (EC), temperature, nitrates, magnesium, phosphorus, and potassium. Farmers see exactly what their soil needs without any lab testing or smartphone apps.',
+    spec: 'pH: 3.5–9.0 | EC: 0–20 dS/m | NPK + Mg readings | Temp: °C',
+    color: 'var(--green-mid)',
+    labelPos: { x: 32, y: 38, anchor: 'left' as const },
+  },
+  {
+    id: 'wind-screen',
+    title: 'Wind Speed Screen',
+    subtitle: 'Environmental Monitoring Display',
+    description:
+      'The second LCD shows wind speed from the anemometer, battery charge level, and system status. Together with the soil screen, it gives a complete picture of both ground and air conditions.',
+    spec: 'Wind speed: m/s | Charge: % | Battery status indicator',
+    color: 'var(--green-bright)',
+    labelPos: { x: 49, y: 33, anchor: 'right' as const },
+  },
+  {
+    id: 'probe',
+    title: 'Metal Rod Probe',
+    subtitle: 'Deep Soil Sensing',
+    description:
+      'The stainless-steel probe rod extends deep into the soil to measure conditions at root level — not just the surface. It delivers accurate readings from where it matters most, ensuring irrigation decisions are based on real root-zone data.',
+    spec: 'Material: Stainless steel | Depth: ~20cm | Corrosion-resistant',
+    color: '#8A9298',
+    labelPos: { x: 13, y: 46, anchor: 'left' as const },
+  },
+  {
+    id: 'body',
+    title: 'Beige Housing',
+    subtitle: 'Rugged Protective Body',
+    description:
+      'The two-piece clamshell body houses all electronics, battery, and wiring. Made from UV-resistant polymer, it protects the internals from sun, rain, and dust while keeping the total weight manageable for field deployment.',
+    spec: 'Material: UV-resistant polymer | IP67 rated | Tool-free assembly',
+    color: '#B89A6A',
+    labelPos: { x: 68, y: 45, anchor: 'right' as const },
   },
   {
     id: 'ceramic',
     title: 'Ceramic Cone',
     subtitle: 'Soil Water Tension Sensor & Valve',
     description:
-      'The porous terracotta tip acts as both sensor and valve. Drier soil creates stronger suction, pulling water through the micropores. When soil is moist, suction weakens and flow stops automatically — pure physics.',
+      'The porous terracotta tip acts as both sensor and valve. Drier soil creates stronger suction, pulling water through the micropores. When soil is moist, suction weakens and flow stops automatically — pure physics, no electricity needed.',
     spec: 'Material: Fired terracotta clay | Pore size: 1–3 μm',
     color: 'var(--brown-mid)',
-    labelPos: { x: 15, y: 78, anchor: 'left' as const },
-  },
-  {
-    id: 'shaft',
-    title: 'Steel Shaft',
-    subtitle: 'Water Reservoir & Conduit',
-    description:
-      "The cylindrical shaft holds the water supply and channels it to the ceramic cone. Medical-grade stainless steel resists corrosion from saline water — critical in Egypt's salt-affected soils.",
-    spec: 'Material: 316L Stainless Steel | Length: ~20cm',
-    color: '#8A9298',
-    labelPos: { x: 28, y: 55, anchor: 'left' as const },
-  },
-  {
-    id: 'sensor',
-    title: 'Sensor Head',
-    subtitle: 'Real-Time Soil Intelligence',
-    description:
-      'The rugged olive-green housing contains three electronic sensors: a capacitive moisture sensor, a glass-electrode pH sensor, and a conductivity (EC) probe for salinity. Readings update every 30 seconds. Solar-charged battery lasts 12+ months.',
-    spec: 'pH: 3.5–9.0 (±0.1) | EC: 0–20 dS/m (±0.1) | Moisture: 0–100% VWC',
-    color: 'var(--olive-housing)',
-    labelPos: { x: 55, y: 30, anchor: 'right' as const },
-  },
-  {
-    id: 'display',
-    title: 'LCD Display',
-    subtitle: 'Readings You Can See From 3 Meters',
-    description:
-      'The high-contrast LCD shows three key readings: soil moisture (% VWC), pH level, and electrical conductivity (EC in dS/m). A traffic-light color bar indicates safety: green = safe, amber = caution, red = action needed. No app required.',
-    spec: 'Display: 1.2" backlit LCD | Update: every 30s | Visibility: 3m+',
-    color: 'var(--green-bright)',
-    labelPos: { x: 50, y: 12, anchor: 'right' as const },
-  },
-  {
-    id: 'fittings',
-    title: 'Brass Fittings',
-    subtitle: 'Connects to Any Water Source',
-    description:
-      'Standard brass quick-connect fittings attach to existing drip lines, garden hoses, or gravity-fed water bottles. The clear medical-grade tubing resists kinking and UV degradation. One connection, no plumbing changes needed.',
-    spec: 'Fitting: 1/4" brass quick-connect | Tubing: UV-resistant PVC',
-    color: '#C8A84E',
-    labelPos: { x: 75, y: 50, anchor: 'right' as const },
+    labelPos: { x: 37, y: 79, anchor: 'left' as const },
   },
 ]
 
