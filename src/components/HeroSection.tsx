@@ -304,8 +304,8 @@ export default function HeroSection() {
             </FadeIn>
           </div>
 
-          {/* RIGHT — Product Photo */}
-          <div className="lg:w-1/2 flex items-center justify-center">
+          {/* RIGHT — Product Photo (hidden on mobile, visible on desktop) */}
+          <div className="hidden lg:flex lg:w-1/2 items-center justify-center">
             <FadeIn delay={0.4} y={30} immediate>
               <div className="relative">
                 <img
