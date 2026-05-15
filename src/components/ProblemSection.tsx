@@ -115,7 +115,7 @@ export default function ProblemSection() {
       <div
         className="grid w-full"
         style={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
           gap: 24,
           maxWidth: 1100,
         }}

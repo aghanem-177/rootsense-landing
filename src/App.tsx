@@ -7,6 +7,7 @@ const MarqueeSection = lazy(() => import('./components/MarqueeSection'))
 const ProblemSection = lazy(() => import('./components/ProblemSection'))
 const ProductExplodeSection = lazy(() => import('./components/ProductExplodeSection'))
 const PricingSection = lazy(() => import('./components/PricingSection'))
+const IoTSection = lazy(() => import('./components/IoTSection'))
 const HowItWorksSection = lazy(() => import('./components/HowItWorksSection'))
 const ServicesSection = lazy(() => import('./components/ServicesSection'))
 const ImpactSection = lazy(() => import('./components/ImpactSection'))
@@ -46,6 +47,9 @@ function App() {
 
         {/* 5. Pricing */}
         <PricingSection />
+
+        {/* 5.5. IoT Product */}
+        <IoTSection />
 
         {/* 6. How It Works */}
         <HowItWorksSection />
