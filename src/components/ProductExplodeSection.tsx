@@ -62,7 +62,7 @@ const parts = [
       'The stainless-steel probe rod extends deep into the soil to measure conditions at root level — not just the surface. It delivers accurate readings from where it matters most, ensuring irrigation decisions are based on real root-zone data.',
     spec: 'Material: Stainless steel | Depth: ~20cm | Corrosion-resistant',
     color: '#8A9298',
-    labelPos: { x: 20, y: 55, anchor: 'left' as const },
+    labelPos: { x: 20, y: 55, anchor: 'right' as const },
   },
   {
     id: 'body',
@@ -147,7 +147,7 @@ function PartLabel({
 
   return (
     <motion.div
-      className="absolute cursor-pointer z-20 hidden sm:block"
+      className="absolute cursor-pointer z-20"
       style={{ left: `${x}%`, top: `${y}%` }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -161,7 +161,7 @@ function PartLabel({
         transition={isActive ? { repeat: Infinity, duration: 1.5, ease: 'easeInOut' } : {}}
       >
         <div
-          className="w-4 h-4 rounded-full border-2 transition-all duration-300"
+          className="w-3 h-3 sm:w-4 sm:h-4 rounded-full border-[1.5px] sm:border-2 transition-all duration-300"
           style={{
             background: isActive ? part.color : 'rgba(255,255,255,0.95)',
             borderColor: part.color,
@@ -187,16 +187,16 @@ function PartLabel({
         <div
           className="transition-all duration-300"
           style={{
-            width: isActive ? 28 : 16,
-            height: 1.5,
+            width: isActive ? 20 : 10,
+            height: 1,
             background: isActive ? part.color : 'rgba(0,0,0,0.15)',
           }}
         />
         {/* Label pill */}
         <motion.div
-          className="font-dm font-semibold whitespace-nowrap rounded-full px-3 py-1 transition-all duration-300"
+          className="font-dm font-semibold whitespace-nowrap rounded-full px-2 py-0.5 sm:px-3 sm:py-1 transition-all duration-300"
           style={{
-            fontSize: '0.65rem',
+            fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)',
             letterSpacing: '0.04em',
             background: isActive ? part.color : 'rgba(255,255,255,0.92)',
             color: isActive ? '#FFFFFF' : 'var(--text-secondary)',
@@ -276,7 +276,7 @@ export default function ProductExplodeSection() {
       <div className="flex flex-col lg:flex-row items-center justify-center gap-12 max-w-[1300px] mx-auto">
         {/* ── Product Image Area ── */}
         <FadeIn delay={0.3} className="relative w-full lg:w-[55%]">
-          <div className="relative flex items-center justify-center" style={{ minHeight: 400 }}>
+          <div className="relative flex items-center justify-center" style={{ minHeight: 300 }}>
             {/* Ambient glow behind product */}
             <motion.div
               className="absolute inset-0 pointer-events-none"

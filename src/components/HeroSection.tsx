@@ -311,7 +311,7 @@ export default function HeroSection() {
                 <img
                   src="/product-nobg.png"
                   alt="RootSense Smart Irrigation Stake — ceramic cone, stainless steel shaft, sensor head with LCD, brass fittings"
-                  className="w-[320px] sm:w-[400px] md:w-[480px] lg:w-[540px] h-auto object-contain transition-transform duration-700 hover:scale-105 hover:rotate-1"
+                  className="w-[260px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-h-[32vh] lg:max-h-none h-auto object-contain transition-transform duration-700 hover:scale-105 hover:rotate-1"
                   style={{
                     filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15)) drop-shadow(0 4px 12px rgba(0,0,0,0.08))',
                   }}
