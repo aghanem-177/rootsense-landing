@@ -4,7 +4,7 @@ import FadeIn from './FadeIn'
 const plans = [
   {
     name: 'Solo Sense',
-    price: '~1,400',
+    price: '949',
     unit: 'EGP',
     period: 'per stake',
     description:
@@ -24,13 +24,13 @@ const plans = [
   },
   {
     name: 'Drip Sense Kit',
-    price: '6,500–8,500',
+    price: '3,999',
     unit: 'EGP',
-    period: 'pack of 4–5 stakes',
+    period: 'pack of 5 stakes',
     description:
-      'Full greenhouse or small-farm package — 4–5 stakes with drip integration hub and water distribution manifold. Built for commercial growers.',
+      'Full greenhouse or small-farm package — 5 stakes with drip integration hub and water distribution manifold. Built for commercial growers.',
     features: [
-      '4–5 RootSense stakes included',
+      '5 RootSense stakes included',
       'Drip-line integration hub',
       'Water distribution manifold',
       'All brass fittings & tubing',
@@ -269,28 +269,6 @@ export default function PricingSection() {
           </FadeIn>
         ))}
       </div>
-
-      {/* Feddan callout */}
-      <FadeIn delay={0.45}>
-        <div
-          className="flex items-center gap-3 rounded-2xl"
-          style={{
-            background: 'var(--green-soft)',
-            border: '1px solid rgba(45,90,45,0.12)',
-            padding: '16px 28px',
-            maxWidth: 520,
-          }}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
-          <p className="font-dm" style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.6 }}>
-            On average, only <strong style={{ color: 'var(--green-mid)' }}>~4 stakes</strong> are needed per feddan of agricultural land.
-          </p>
-        </div>
-      </FadeIn>
 
       {/* Bottom trust bar */}
       <FadeIn delay={0.5}>

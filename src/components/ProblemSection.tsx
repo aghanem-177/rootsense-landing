@@ -31,6 +31,15 @@ function LockIcon() {
   )
 }
 
+function HeatIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E07C3A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/>
+      <path d="M11.5 14V6"/>
+    </svg>
+  )
+}
+
 const problems = [
   {
     iconComponent: <WaterIcon />,
@@ -61,6 +70,16 @@ const problems = [
     iconBg: 'var(--green-soft)',
     statColor: 'var(--green-mid)',
     statBg: 'var(--green-soft)',
+  },
+  {
+    iconComponent: <HeatIcon />,
+    title: 'Heat & Wind Stress',
+    body: 'Rising temperatures and wind accelerate water loss from crops. In hot periods, plants can lose 4–6 mm of water per day — and without real-time data, farmers have no way to keep up.',
+    stat: 'FAO 2022',
+    borderColor: '#E07C3A',
+    iconBg: 'rgba(224,124,58,0.1)',
+    statColor: '#E07C3A',
+    statBg: 'rgba(224,124,58,0.1)',
   },
 ]
 

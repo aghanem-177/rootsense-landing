@@ -297,7 +297,7 @@ export default function HeroSection() {
                 </div>
                 <div className="hidden sm:block" style={{ width: 1, height: 36, background: 'var(--sand)' }} />
                 <div>
-                  <p className="font-playfair font-bold text-xl sm:text-2xl" style={{ color: 'var(--green-mid)' }}>30s</p>
+                  <p className="font-playfair font-bold text-xl sm:text-2xl" style={{ color: 'var(--green-mid)' }}>Instant</p>
                   <p className="font-dm uppercase tracking-wider" style={{ color: 'var(--text-tertiary)', fontSize: '0.65rem' }}>Updates</p>
                 </div>
               </div>

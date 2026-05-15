@@ -20,7 +20,7 @@ const parts = [
     subtitle: 'Wind Speed Monitoring',
     description:
       'The fan-blade anemometer at the top measures real-time wind speed, helping farmers understand evapotranspiration rates. Higher wind means faster soil drying — so you know when crops need extra attention.',
-    spec: 'Range: 0–30 m/s | Accuracy: ±0.3 m/s | Updates: every 30s',
+    spec: 'Range: 0–30 m/s | Accuracy: ±0.3 m/s | Instant updates',
     color: '#4A4A4A',
     labelPos: { x: 55, y: 4, anchor: 'right' as const },
   },
