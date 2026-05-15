@@ -54,9 +54,9 @@ function Tile({ label, icon }: { label: string; icon?: string }) {
     <div
       className="flex items-center justify-center gap-3 shrink-0"
       style={{
-        minWidth: 200,
-        height: 100,
-        borderRadius: 16,
+        minWidth: 150,
+        height: 72,
+        borderRadius: 14,
         background: '#FFFFFF',
         border: '1px solid var(--border-light)',
         boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
@@ -103,8 +103,8 @@ export default function MarqueeSection() {
       className="overflow-hidden"
       style={{
         background: 'var(--cream)',
-        paddingTop: 'clamp(96px, 10vw, 160px)',
-        paddingBottom: 40,
+        paddingTop: 'clamp(48px, 8vw, 160px)',
+        paddingBottom: 32,
       }}
     >
       {/* Row 1 — moves RIGHT on scroll */}

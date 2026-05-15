@@ -35,7 +35,7 @@ export default function HeroSection() {
         height: '100vh',
         minHeight: 700,
         background: 'var(--page-bg)',
-        overflowX: 'clip',
+        overflow: 'clip',
       }}
     >
       {/* Water Drop Particles — realistic with gradients */}
