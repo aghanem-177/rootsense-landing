@@ -4,8 +4,8 @@ export default function OrderButton() {
       href="mailto:teamrootsense@gmail.com"
       className="fixed flex items-center justify-center cursor-pointer transition-all duration-200 hover:scale-110"
       style={{
-        bottom: 28,
-        right: 28,
+        bottom: 'max(28px, env(safe-area-inset-bottom, 28px))',
+        right: 20,
         zIndex: 999,
         width: 56,
         height: 56,

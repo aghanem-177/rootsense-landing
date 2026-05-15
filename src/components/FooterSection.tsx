@@ -115,7 +115,7 @@ export default function FooterSection() {
               target={link.label !== 'Email' ? '_blank' : undefined}
               rel={link.label !== 'Email' ? 'noopener noreferrer' : undefined}
               className="flex items-center gap-2.5 font-dm mb-3 cursor-pointer transition-colors duration-200 no-underline"
-              style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none' }}
+              style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', textDecoration: 'none', minHeight: 44, padding: '6px 0' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#6DBF6D')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
             >

@@ -22,7 +22,7 @@ const parts = [
       'The fan-blade anemometer at the top measures real-time wind speed, helping farmers understand evapotranspiration rates. Higher wind means faster soil drying — so you know when crops need extra attention.',
     spec: 'Range: 0–30 m/s | Accuracy: ±0.3 m/s | Updates: every 30s',
     color: '#4A4A4A',
-    labelPos: { x: 48, y: 4, anchor: 'right' as const },
+    labelPos: { x: 61, y: 8, anchor: 'right' as const },
   },
   {
     id: 'solar',
@@ -32,7 +32,7 @@ const parts = [
       'Two high-efficiency monocrystalline solar panels continuously charge the internal battery. No wiring, no battery replacements — the stake powers itself indefinitely under normal daylight conditions.',
     spec: '2× monocrystalline cells | Output: 5V | Battery life: 12+ months',
     color: '#2A4A7A',
-    labelPos: { x: 51, y: 15, anchor: 'right' as const },
+    labelPos: { x: 59, y: 16, anchor: 'right' as const },
   },
   {
     id: 'soil-screen',
@@ -42,7 +42,7 @@ const parts = [
       'The circular LCD displays live soil diagnostics: pH level, salinity (EC), temperature, nitrates, magnesium, phosphorus, and potassium. Farmers see exactly what their soil needs without any lab testing or smartphone apps.',
     spec: 'pH: 3.5–9.0 | EC: 0–20 dS/m | NPK + Mg readings | Temp: °C',
     color: 'var(--green-mid)',
-    labelPos: { x: 32, y: 38, anchor: 'left' as const },
+    labelPos: { x: 42, y: 35, anchor: 'left' as const },
   },
   {
     id: 'wind-screen',
@@ -52,7 +52,7 @@ const parts = [
       'The second LCD shows wind speed from the anemometer, battery charge level, and system status. Together with the soil screen, it gives a complete picture of both ground and air conditions.',
     spec: 'Wind speed: m/s | Charge: % | Battery status indicator',
     color: 'var(--green-bright)',
-    labelPos: { x: 49, y: 33, anchor: 'right' as const },
+    labelPos: { x: 71, y: 35, anchor: 'right' as const },
   },
   {
     id: 'probe',
@@ -62,7 +62,7 @@ const parts = [
       'The stainless-steel probe rod extends deep into the soil to measure conditions at root level — not just the surface. It delivers accurate readings from where it matters most, ensuring irrigation decisions are based on real root-zone data.',
     spec: 'Material: Stainless steel | Depth: ~20cm | Corrosion-resistant',
     color: '#8A9298',
-    labelPos: { x: 13, y: 46, anchor: 'left' as const },
+    labelPos: { x: 22, y: 62, anchor: 'left' as const },
   },
   {
     id: 'body',
@@ -72,7 +72,7 @@ const parts = [
       'The two-piece clamshell body houses all electronics, battery, and wiring. Made from UV-resistant polymer, it protects the internals from sun, rain, and dust while keeping the total weight manageable for field deployment.',
     spec: 'Material: UV-resistant polymer | IP67 rated | Tool-free assembly',
     color: '#B89A6A',
-    labelPos: { x: 68, y: 45, anchor: 'right' as const },
+    labelPos: { x: 75, y: 50, anchor: 'right' as const },
   },
   {
     id: 'ceramic',
@@ -82,7 +82,7 @@ const parts = [
       'The porous terracotta tip acts as both sensor and valve. Drier soil creates stronger suction, pulling water through the micropores. When soil is moist, suction weakens and flow stops automatically — pure physics, no electricity needed.',
     spec: 'Material: Fired terracotta clay | Pore size: 1–3 μm',
     color: 'var(--brown-mid)',
-    labelPos: { x: 37, y: 79, anchor: 'left' as const },
+    labelPos: { x: 45, y: 77, anchor: 'left' as const },
   },
 ]
 
@@ -130,7 +130,7 @@ function BurstParticles({ active }: { active: boolean }) {
   )
 }
 
-/* ── Part indicator label overlay on the exploded image ── */
+/* ── Part indicator label overlay — subtle, non-intrusive dots with tiny labels ── */
 function PartLabel({
   part,
   isActive,
@@ -143,74 +143,52 @@ function PartLabel({
   index: number
 }) {
   if (!part.labelPos) return null
-  const { x, y, anchor } = part.labelPos
+  const { x, y } = part.labelPos
 
   return (
     <motion.div
-      className="absolute cursor-pointer z-20"
-      style={{ left: `${x}%`, top: `${y}%` }}
+      className="absolute cursor-pointer z-20 hidden md:block"
+      style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: 'spring', stiffness: 300, damping: 20 }}
       onClick={onClick}
     >
-      {/* Pulsing dot */}
+      {/* Small dot indicator */}
       <motion.div
-        className="relative"
-        animate={isActive ? { scale: [1, 1.4, 1] } : { scale: 1 }}
-        transition={isActive ? { repeat: Infinity, duration: 1.5, ease: 'easeInOut' } : {}}
+        className="relative flex items-center justify-center"
+        animate={isActive ? { scale: [1, 1.2, 1] } : { scale: 1 }}
+        transition={isActive ? { repeat: Infinity, duration: 2, ease: 'easeInOut' } : {}}
       >
         <div
-          className="w-4 h-4 rounded-full border-2 transition-all duration-300"
+          className="rounded-full transition-all duration-300"
           style={{
-            background: isActive ? part.color : 'rgba(255,255,255,0.95)',
-            borderColor: part.color,
+            width: isActive ? 10 : 7,
+            height: isActive ? 10 : 7,
+            background: isActive ? part.color : 'rgba(255,255,255,0.85)',
+            border: `1.5px solid ${isActive ? part.color : 'rgba(0,0,0,0.2)'}`,
             boxShadow: isActive
-              ? `0 0 0 6px ${part.color}25, 0 0 12px ${part.color}40`
-              : `0 2px 8px rgba(0,0,0,0.18)`,
+              ? `0 0 0 4px ${part.color}20, 0 0 8px ${part.color}30`
+              : '0 1px 4px rgba(0,0,0,0.15)',
           }}
         />
       </motion.div>
 
-      {/* Label connector line + text pill */}
-      <div
-        className="absolute flex items-center gap-1"
+      {/* Tiny floating label — only visible on hover or when active */}
+      <motion.div
+        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap font-dm font-medium pointer-events-none"
         style={{
-          top: '50%',
-          transform: 'translateY(-50%)',
-          ...(anchor === 'right'
-            ? { left: '100%', marginLeft: 6, flexDirection: 'row' as const }
-            : { right: '100%', marginRight: 6, flexDirection: 'row-reverse' as const }),
+          bottom: '100%',
+          marginBottom: 6,
+          fontSize: '0.58rem',
+          letterSpacing: '0.03em',
+          color: isActive ? part.color : 'var(--text-tertiary)',
+          textShadow: '0 1px 3px rgba(255,255,255,0.8)',
         }}
+        animate={{ opacity: isActive ? 1 : 0.5 }}
       >
-        {/* Connector line */}
-        <div
-          className="transition-all duration-300"
-          style={{
-            width: isActive ? 28 : 16,
-            height: 1.5,
-            background: isActive ? part.color : 'rgba(0,0,0,0.15)',
-          }}
-        />
-        {/* Label pill */}
-        <motion.div
-          className="font-dm font-semibold whitespace-nowrap rounded-full px-3 py-1 transition-all duration-300"
-          style={{
-            fontSize: '0.65rem',
-            letterSpacing: '0.04em',
-            background: isActive ? part.color : 'rgba(255,255,255,0.92)',
-            color: isActive ? '#FFFFFF' : 'var(--text-secondary)',
-            boxShadow: isActive
-              ? `0 4px 16px ${part.color}35`
-              : '0 2px 10px rgba(0,0,0,0.1)',
-            border: `1px solid ${isActive ? 'transparent' : 'rgba(0,0,0,0.06)'}`,
-            backdropFilter: 'blur(8px)',
-          }}
-          animate={{ scale: isActive ? 1.08 : 1 }}
-        >
-          {part.title}
-        </motion.div>
-      </div>
+        {part.title}
+      </motion.div>
     </motion.div>
   )
 }
@@ -483,7 +461,7 @@ export default function ProductExplodeSection() {
           </AnimatePresence>
 
           {/* Component Quick-Select Pills */}
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-6 overflow-x-auto pb-2" style={{ WebkitOverflowScrolling: 'touch' }}>
             {parts.map((part, i) => (
               <button
                 key={part.id}

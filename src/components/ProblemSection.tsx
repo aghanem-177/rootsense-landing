@@ -104,11 +104,11 @@ export default function ProblemSection() {
         {/* $300M Market Callout */}
         <FadeIn delay={0.15} className="col-span-full">
           <div
-            className="flex items-center gap-4 rounded-2xl mx-auto"
+            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 rounded-2xl mx-auto text-center sm:text-left"
             style={{
               background: 'var(--brown-soft)',
               border: '1px solid rgba(184,92,56,0.12)',
-              padding: '18px 28px',
+              padding: '18px 24px',
               maxWidth: 600,
             }}
           >

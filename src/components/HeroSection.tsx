@@ -285,20 +285,20 @@ export default function HeroSection() {
 
             {/* Stats bar */}
             <FadeIn delay={0.6} y={15} immediate>
-              <div className="flex items-center gap-8 mt-10">
+              <div className="flex items-center gap-5 sm:gap-8 mt-10">
                 <div>
-                  <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>74%</p>
-                  <p className="font-dm text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Water Saved</p>
+                  <p className="font-playfair font-bold text-xl sm:text-2xl" style={{ color: 'var(--green-mid)' }}>74%</p>
+                  <p className="font-dm uppercase tracking-wider" style={{ color: 'var(--text-tertiary)', fontSize: '0.65rem' }}>Water Saved</p>
                 </div>
-                <div style={{ width: 1, height: 36, background: 'var(--sand)' }} />
+                <div className="hidden sm:block" style={{ width: 1, height: 36, background: 'var(--sand)' }} />
                 <div>
-                  <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>4-in-1</p>
-                  <p className="font-dm text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Sensors</p>
+                  <p className="font-playfair font-bold text-xl sm:text-2xl" style={{ color: 'var(--green-mid)' }}>4-in-1</p>
+                  <p className="font-dm uppercase tracking-wider" style={{ color: 'var(--text-tertiary)', fontSize: '0.65rem' }}>Sensors</p>
                 </div>
-                <div style={{ width: 1, height: 36, background: 'var(--sand)' }} />
+                <div className="hidden sm:block" style={{ width: 1, height: 36, background: 'var(--sand)' }} />
                 <div>
-                  <p className="font-playfair font-bold text-2xl" style={{ color: 'var(--green-mid)' }}>30s</p>
-                  <p className="font-dm text-xs uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Updates</p>
+                  <p className="font-playfair font-bold text-xl sm:text-2xl" style={{ color: 'var(--green-mid)' }}>30s</p>
+                  <p className="font-dm uppercase tracking-wider" style={{ color: 'var(--text-tertiary)', fontSize: '0.65rem' }}>Updates</p>
                 </div>
               </div>
             </FadeIn>
