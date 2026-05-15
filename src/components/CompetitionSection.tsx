@@ -1,10 +1,10 @@
 import FadeIn from './FadeIn'
 
-const blumatFeatures = [
+const othersFeatures = [
   'Water control only',
   'No salinity diagnostics',
   'No pH monitoring',
-  'European balcony market',
+  'Not built for MENA climate',
 ]
 
 const rootsenseFeatures = [
@@ -52,7 +52,7 @@ export default function CompetitionSection() {
           maxWidth: 900,
         }}
       >
-        {/* Blumat Card */}
+        {/* Others Card */}
         <FadeIn delay={0.2}>
           <div
             style={{
@@ -64,13 +64,13 @@ export default function CompetitionSection() {
             }}
           >
             <h3 className="font-playfair font-bold" style={{ fontSize: '1.4rem', color: 'var(--text-primary)' }}>
-              Blumat
+              Other Irrigation Stakes
             </h3>
             <p className="font-dm mt-1 mb-6" style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem' }}>
-              Austria &bull; &euro;8–15 &bull; European hobbyists
+              Generic &bull; Single-purpose &bull; Not built for local farms
             </p>
             <div className="flex flex-col gap-3">
-              {blumatFeatures.map((f, i) => (
+              {othersFeatures.map((f, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div
                     className="w-6 h-6 rounded-full flex items-center justify-center shrink-0"
@@ -140,7 +140,7 @@ export default function CompetitionSection() {
             lineHeight: 1.7,
           }}
         >
-          "Blumat controls water. RootSense controls decisions — built for farms that face salinity, not European balconies."
+          "Others control water. RootSense controls decisions — built for farms that face salinity, not backyard gardens."
         </p>
       </FadeIn>
     </section>

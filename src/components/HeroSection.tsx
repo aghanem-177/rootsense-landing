@@ -206,7 +206,7 @@ export default function HeroSection() {
                 className="uppercase font-dm font-semibold tracking-[0.3em]"
                 style={{ color: 'var(--green-mid)', fontSize: '0.72rem' }}
               >
-                INJAZ Company Program &bull; Made in Egypt
+                Made in Egypt
               </p>
             </FadeIn>
 
@@ -237,7 +237,7 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <FadeIn delay={0.5} y={20} immediate>
-              <div className="flex flex-wrap items-center gap-4 mt-8">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-8">
                 <a
                   href="mailto:teamrootsense@gmail.com"
                   className="rounded-full font-dm font-medium uppercase tracking-widest text-sm px-8 py-3.5 cursor-pointer transition-all duration-200"

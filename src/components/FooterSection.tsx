@@ -135,7 +135,7 @@ export default function FooterSection() {
         }}
       >
         <p className="font-dm" style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.75rem' }}>
-          &copy; 2025 RootSense — INJAZ Company Program
+          &copy; 2025 RootSense
         </p>
         <p className="font-dm" style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.75rem' }}>
           Made in Egypt
