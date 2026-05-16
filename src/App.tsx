@@ -48,11 +48,11 @@ function App() {
         {/* 5. Pricing */}
         <PricingSection />
 
-        {/* 5.5. IoT Product */}
-        <IoTSection />
-
-        {/* 6. How It Works */}
+        {/* 6. How It Works (The Science) */}
         <HowItWorksSection />
+
+        {/* 7. IoT Product */}
+        <IoTSection />
 
         {/* 6. Services */}
         <ServicesSection />

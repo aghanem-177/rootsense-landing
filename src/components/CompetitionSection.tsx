@@ -8,7 +8,7 @@ const othersFeatures = [
 ]
 
 const rootsenseFeatures = [
-  'Water + salinity + pH + wind speed (4-in-1)',
+  'Water + salinity + pH + wind speed (5-in-1)',
   'Built for MENA salt-affected soils',
   'Arabic instructions, local supply',
   'Online ordering + agri-shop distribution',

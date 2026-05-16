@@ -9,8 +9,8 @@ const parts = [
     title: 'Assembled View',
     subtitle: 'The Complete RootSense Stake',
     description:
-      'A 4-in-1 smart irrigation stake combining soil diagnostics, wind monitoring, solar charging, and automatic water delivery. Push it into the ground and start growing smarter — addressing Egypt\'s $300M irrigation market.',
-    spec: 'Weight: ~380g | Length: ~30cm | Solar-powered | 4-in-1 sensors',
+      'A 5-in-1 smart irrigation stake combining soil diagnostics, wind monitoring, solar charging, and automatic water delivery. Push it into the ground and start growing smarter — addressing Egypt\'s $300M irrigation market.',
+    spec: 'Weight: ~380g | Length: ~30cm | Solar-powered | 5-in-1 sensors',
     color: 'var(--green-mid)',
     labelPos: null,
   },
@@ -39,8 +39,8 @@ const parts = [
     title: 'Soil Reading Screen',
     subtitle: 'Real-Time Soil Intelligence',
     description:
-      'The circular LCD displays live soil diagnostics: pH level, salinity (EC), temperature, nitrates, magnesium, phosphorus, and potassium. Farmers see exactly what their soil needs without any lab testing or smartphone apps.',
-    spec: 'pH: 3.5–9.0 | EC: 0–20 dS/m | NPK + Mg readings | Temp: °C',
+      'The circular LCD displays live soil diagnostics: pH level, salinity (EC), temperature, sunlight levels and Nitrate Availability. Farmers see exactly what their soil needs without any lab testing, technology or smartphone apps.',
+    spec: 'pH: 0.1-13.9 | EC (Salinity): % | Nitrate (NPK + Mg): % | Temp: °C',
     color: 'var(--green-mid)',
     labelPos: { x: 40, y: 34, anchor: 'left' as const },
   },

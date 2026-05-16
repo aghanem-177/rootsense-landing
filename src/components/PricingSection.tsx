@@ -11,7 +11,7 @@ const plans = [
       'One smart irrigation stake for home gardens, balcony planters, or single-pot use. Everything you need to stop guessing.',
     features: [
       'Ceramic auto-irrigation cone',
-      '4-in-1 sensors (pH, salinity, temp, wind)',
+      '5-in-1 sensors (pH, salinity, temp, wind)',
       'Dual LCD screens (soil + wind)',
       'Solar-charged battery (12+ months)',
       'Built-in anemometer',
