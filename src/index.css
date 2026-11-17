@@ -83,6 +83,65 @@
   color: var(--fam-ink);
 }
 
+/* Home opening: ground line, seedling and a root that grows down into the soil. */
+.ground {
+  position: relative;
+  flex: 1;
+  min-height: clamp(180px, 30vh, 320px);
+  margin-top: 2.5rem;
+  background: linear-gradient(
+    to bottom,
+    transparent 17.5%,
+    color-mix(in srgb, var(--sand) 60%, var(--fam-bg)) 17.5%,
+    var(--fam-bg) 100%
+  );
+}
+
+.ground::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 17.5%;
+  height: 2px;
+  background: color-mix(in srgb, var(--brown-dark) 35%, transparent);
+}
+
+.ground-art {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  overflow: visible;
+}
+
+.ground-root {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: root-draw 1.6s cubic-bezier(0.3, 0.6, 0.3, 1) 0.25s forwards;
+}
+
+.ground-root--late {
+  animation-duration: 0.9s;
+  animation-delay: 1s;
+}
+
+.ground-leaf {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: leaf-up 0.6s ease-out 0.1s both;
+}
+
+@keyframes root-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes leaf-up {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* Short colour fade between two sections. It never carries text. */
 .blend {
   height: clamp(96px, 18vh, 200px);
@@ -159,6 +218,20 @@
   .btn-primary:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+  }
+
+  .btn-lg {
+    min-height: 52px;
+    padding: 0 2rem;
+    font-size: 1rem;
+  }
+
+  .btn-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  a:hover .btn-arrow {
+    transform: translateX(3px);
   }
 
   .eyebrow {

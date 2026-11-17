@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import FadeIn from '../components/FadeIn'
+import GroundOpening from '../components/GroundOpening'
 import { ProductImage } from '../components/ImageSlot'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
@@ -131,31 +132,7 @@ export default function Home() {
     <Layout theme="terra">
       {/* Opening */}
       <div data-family="brand" className="theme-band">
-        <Screen labelledBy="home-title" className="items-center text-center">
-          <FadeIn immediate>
-            <p className="eyebrow">RootSense · Made in Egypt</p>
-          </FadeIn>
-          <FadeIn immediate delay={0.08}>
-            <h1 id="home-title" className="mt-4 font-playfair text-[clamp(3.25rem,11vw,7.5rem)] font-black leading-[0.95]">
-              Know your soil.
-            </h1>
-          </FadeIn>
-          <FadeIn immediate delay={0.16}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-              Sensors that read the ground at the root and water by what they find. Three families, from a single pot to a whole farm.
-            </p>
-          </FadeIn>
-          <FadeIn immediate delay={0.24}>
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Link to="/shop" className="btn-primary">
-                Shop the range
-              </Link>
-              <a href="#families" className="btn-secondary">
-                Meet the families
-              </a>
-            </div>
-          </FadeIn>
-        </Screen>
+        <GroundOpening />
 
         {/* The three families */}
         <Screen id="families" labelledBy="families-title">
