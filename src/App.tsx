@@ -1,79 +1,52 @@
 import { lazy, Suspense } from 'react'
-import HeroSection from './components/HeroSection'
-import OrderButton from './components/OrderButton'
+import { MotionConfig } from 'framer-motion'
+import Layout from './components/Layout'
+import Link from './components/Link'
+import { getProduct } from './data/products'
+import { useLocation, usePageTitle } from './lib/router'
+import Home from './pages/Home'
 
-// Lazy load sections below the fold
-const MarqueeSection = lazy(() => import('./components/MarqueeSection'))
-const ProblemSection = lazy(() => import('./components/ProblemSection'))
-const ProductExplodeSection = lazy(() => import('./components/ProductExplodeSection'))
-const PricingSection = lazy(() => import('./components/PricingSection'))
-const IoTSection = lazy(() => import('./components/IoTSection'))
-const HowItWorksSection = lazy(() => import('./components/HowItWorksSection'))
-const ServicesSection = lazy(() => import('./components/ServicesSection'))
-const ImpactSection = lazy(() => import('./components/ImpactSection'))
-const CompetitionSection = lazy(() => import('./components/CompetitionSection'))
-const TeamSection = lazy(() => import('./components/TeamSection'))
-const FooterSection = lazy(() => import('./components/FooterSection'))
+const Why = lazy(() => import('./pages/Why'))
+const Shop = lazy(() => import('./pages/Shop'))
+const ProductPage = lazy(() => import('./pages/ProductPage'))
+const Waitlist = lazy(() => import('./pages/Waitlist'))
 
-function SectionFallback() {
+function NotFound() {
+  usePageTitle('Page not found — RootSense')
   return (
-    <div className="flex items-center justify-center py-40">
-      <div
-        className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin"
-        style={{ borderColor: 'var(--green-mid)', borderTopColor: 'transparent' }}
-      />
-    </div>
+    <Layout theme="brand">
+      <div className="mx-auto max-w-xl px-4 py-32 text-center">
+        <h1 className="font-playfair text-5xl font-black">Page not found.</h1>
+        <p className="mt-4 text-muted">That address doesn't lead anywhere on our site.</p>
+        <Link to="/" className="btn-primary mt-8">
+          Back to home
+        </Link>
+      </div>
+    </Layout>
   )
 }
 
-function App() {
-  return (
-    <div style={{ overflowX: 'clip' }}>
-      {/* Film Grain Overlay */}
-      <div className="film-grain" />
-
-      {/* 1. Hero */}
-      <HeroSection />
-
-      <Suspense fallback={<SectionFallback />}>
-        {/* 2. Marquee */}
-        <MarqueeSection />
-
-        {/* 3. Problem */}
-        <ProblemSection />
-
-        {/* 4. Product Explode (Centerpiece) */}
-        <ProductExplodeSection />
-
-        {/* 5. Pricing */}
-        <PricingSection />
-
-        {/* 6. How It Works (The Science) */}
-        <HowItWorksSection />
-
-        {/* 7. IoT Product */}
-        <IoTSection />
-
-        {/* 6. Services */}
-        <ServicesSection />
-
-        {/* 7. Impact */}
-        <ImpactSection />
-
-        {/* 8. Competition */}
-        <CompetitionSection />
-
-        {/* 9. Team */}
-        <TeamSection />
-
-        {/* 10. Footer */}
-        <FooterSection />
-      </Suspense>
-
-      {/* Floating Order Button */}
-      <OrderButton />
-    </div>
-  )
+function Loading() {
+  return <div className="min-h-screen" aria-busy="true" />
 }
 
-export default App
+export default function App() {
+  const { path, params } = useLocation()
+
+  let page
+  if (path === '/') page = <Home />
+  else if (path === '/why') page = <Why />
+  else if (path === '/shop') page = <Shop />
+  else if (path.startsWith('/shop/')) {
+    const product = getProduct(path.slice('/shop/'.length))
+    page = product ? <ProductPage key={product.slug} product={product} /> : <NotFound />
+  } else if (path === '/waitlist') page = <Waitlist key={params.toString()} params={params} />
+  else page = <NotFound />
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <div className="film-grain" aria-hidden="true" />
+      <Suspense fallback={<Loading />}>{page}</Suspense>
+    </MotionConfig>
+  )
+}
