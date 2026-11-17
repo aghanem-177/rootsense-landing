@@ -44,6 +44,8 @@
   --fam-accent-ink: #FFFFFF;
   --fam-line: rgba(26, 21, 16, 0.1);
   --fam-error: #B42318;
+  --fam-glow: rgba(255, 255, 255, 0.95);
+  --fam-shadow: rgba(40, 25, 10, 0.26);
 }
 
 [data-family='solo'] {
@@ -55,6 +57,8 @@
   --fam-accent-ink: #FFFFFF;
   --fam-line: rgba(26, 21, 16, 0.12);
   --fam-error: #B42318;
+  --fam-glow: rgba(255, 255, 255, 0.9);
+  --fam-shadow: rgba(60, 35, 15, 0.28);
 }
 
 [data-family='flow'] {
@@ -66,6 +70,8 @@
   --fam-accent-ink: #FFFFFF;
   --fam-line: rgba(11, 36, 24, 0.2);
   --fam-error: #63130D;
+  --fam-glow: rgba(229, 237, 235, 0.7);
+  --fam-shadow: rgba(8, 30, 22, 0.32);
 }
 
 [data-family='terra'] {
@@ -77,6 +83,8 @@
   --fam-accent-ink: #1C0E06;
   --fam-line: rgba(245, 240, 232, 0.14);
   --fam-error: #DD9C97;
+  --fam-glow: rgba(212, 149, 106, 0.2);
+  --fam-shadow: rgba(0, 0, 0, 0.55);
 }
 
 .family-scope,
@@ -85,18 +93,26 @@
   color: var(--fam-ink);
 }
 
-/* Home opening: ground line, seedling and a root that grows down into the soil. */
+/* Home opening: a ground line, then soil that settles into Solo's cream. */
 .ground {
+  --soil-top: color-mix(in oklab, var(--sand), var(--brown-light) 14%);
   position: relative;
   flex: 1;
-  min-height: clamp(180px, 30vh, 320px);
+  min-height: clamp(240px, 38vh, 420px);
   margin-top: 2.5rem;
-  background: linear-gradient(
-    to bottom,
-    transparent 17.5%,
-    color-mix(in srgb, var(--sand) 60%, var(--fam-bg)) 17.5%,
-    var(--fam-bg) 100%
-  );
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='20'%3E%3Cpath d='M0 10 Q 50 4 100 10 T 200 10 T 300 10 T 400 10' fill='none' stroke='%23B85C38' stroke-opacity='0.16' stroke-width='1'/%3E%3C/svg%3E") repeat-x 0 48% / 400px 20px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='20'%3E%3Cpath d='M0 10 Q 50 4 100 10 T 200 10 T 300 10 T 400 10' fill='none' stroke='%235C3A1E' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E") repeat-x -150px 76% / 400px 20px,
+    linear-gradient(
+      to bottom,
+      transparent 17.5%,
+      var(--soil-top) 17.5%,
+      color-mix(in oklab, var(--soil-top), var(--bg-solo) 6%) 30%,
+      color-mix(in oklab, var(--soil-top), var(--bg-solo) 32%) 50%,
+      color-mix(in oklab, var(--soil-top), var(--bg-solo) 68%) 70%,
+      color-mix(in oklab, var(--soil-top), var(--bg-solo) 94%) 88%,
+      var(--bg-solo) 100%
+    );
 }
 
 .ground::before {
@@ -105,14 +121,25 @@
   left: 0;
   right: 0;
   top: 17.5%;
-  height: 2px;
-  background: color-mix(in srgb, var(--brown-dark) 35%, transparent);
+  height: 1.5px;
+  background: color-mix(in srgb, var(--brown-dark) 32%, transparent);
+}
+
+.ground::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(17.5% + 1.5px);
+  height: 14px;
+  background: linear-gradient(to bottom, rgba(92, 58, 30, 0.08), transparent);
 }
 
 .ground-art {
   position: absolute;
   top: 0;
   left: 50%;
+  z-index: 1;
   height: 100%;
   transform: translateX(-50%);
   overflow: visible;
@@ -121,22 +148,26 @@
 .ground-root {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: root-draw 1.6s cubic-bezier(0.3, 0.6, 0.3, 1) 0.25s forwards;
+  animation: root-draw 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0.2s) forwards;
 }
 
-.ground-root--late {
-  animation-duration: 0.9s;
-  animation-delay: 1s;
+.ground-fade {
+  opacity: 0;
+  animation: soil-fade 0.8s ease-out var(--d, 0.6s) forwards;
 }
 
 .ground-leaf {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: leaf-up 0.6s ease-out 0.1s both;
+  animation: leaf-up 0.7s cubic-bezier(0.3, 0.6, 0.3, 1) 0.1s both;
 }
 
 @keyframes root-draw {
   to { stroke-dashoffset: 0; }
+}
+
+@keyframes soil-fade {
+  to { opacity: 1; }
 }
 
 @keyframes leaf-up {
@@ -144,11 +175,72 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-/* Short colour fade between two sections. It never carries text. */
+/* Fade between two sections. Eased at both ends so there is no visible edge. It never carries text. */
 .blend {
-  height: clamp(96px, 18vh, 200px);
+  height: clamp(180px, 30vh, 340px);
   background: linear-gradient(to bottom, var(--blend-from), var(--blend-to));
-  background: linear-gradient(in oklab to bottom, var(--blend-from), var(--blend-to));
+  background: linear-gradient(
+    to bottom,
+    var(--blend-from) 0%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 0.9%) 10%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 5.8%) 20%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 16.3%) 30%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 31.7%) 40%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 50%) 50%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 68.3%) 60%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 83.7%) 70%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 94.2%) 80%,
+    color-mix(in oklab, var(--blend-from), var(--blend-to) 99.1%) 90%,
+    var(--blend-to) 100%
+  );
+}
+
+/* Neighbouring bands share a colour at their join; overlapping by 1px hides the hairline
+   that sub-pixel edges would otherwise let through from the dark page behind. */
+.blend,
+.blend + .theme-band,
+.theme-band + .theme-band {
+  margin-top: -1px;
+}
+
+/* Product photos sit on a soft pool of light with a contact shadow, instead of a drop shadow. */
+.product-stage {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.product-stage img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-stage::before {
+  content: '';
+  position: absolute;
+  inset: 6% 2% 9%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fam-glow), transparent 75%);
+}
+
+.product-stage::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 4.4%;
+  height: 4%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fam-shadow), transparent);
+}
+
+.product-stage--floating::after {
+  display: none;
 }
 
 @layer base {
@@ -170,6 +262,15 @@
 
   html {
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p, li, dd {
+    text-wrap: pretty;
   }
 
   [id] {
@@ -418,6 +519,14 @@
   .border-line {
     border-color: var(--fam-line);
   }
+
+  .display {
+    letter-spacing: -0.02em;
+  }
+
+  .card-soft {
+    box-shadow: 0 1px 2px rgba(26, 21, 16, 0.04), 0 18px 40px -26px rgba(40, 25, 10, 0.35);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -432,9 +541,11 @@
   }
 
   .ground-root,
-  .ground-leaf {
+  .ground-leaf,
+  .ground-fade {
     animation: none;
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 
   *, *::before, *::after {
@@ -442,27 +553,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-.hero-heading {
-  background: linear-gradient(180deg, #C4B8A4 0%, #5A4A3A 50%, #1A1510 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.green-heading {
-  background: linear-gradient(180deg, #6DBF6D 0%, #1B3A1B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.light-heading {
-  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, #FFFFFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .film-grain {
@@ -475,31 +565,4 @@
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.2); }
-}
-
-@keyframes pulseRing {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-@keyframes drip {
-  0% { transform: translateY(-10px) scale(0.7); opacity: 0; }
-  15% { opacity: 1; transform: translateY(0) scale(1); }
-  85% { opacity: 0.6; }
-  100% { transform: translateY(120px) scale(0.5); opacity: 0; }
-}
-
-@keyframes dotRing {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(45,90,45,0.2); }
-  50% { box-shadow: 0 0 0 6px rgba(45,90,45,0.1); }
-}
-
-@keyframes barFill {
-  from { width: 0; }
 }

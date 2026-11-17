@@ -8,7 +8,7 @@ import { families, formatPrice, missingChoices, waitlistUrl, type Product, type 
 import { navigate, usePageTitle } from '../lib/router'
 
 export default function ProductPage({ product }: { product: Product }) {
-  usePageTitle(`${product.name} — RootSense`)
+  usePageTitle(`${product.name} · RootSense`)
   const [selection, setSelection] = useState<Selection>({})
   const missing = missingChoices(product, selection)
   const ready = missing.length === 0

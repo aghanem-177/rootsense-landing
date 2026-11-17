@@ -5,7 +5,7 @@ import { families, formatPrice, products } from '../data/products'
 import { usePageTitle } from '../lib/router'
 
 export default function Shop() {
-  usePageTitle('Shop — RootSense')
+  usePageTitle('Shop · RootSense')
 
   return (
     <Layout theme="brand">
@@ -17,7 +17,7 @@ export default function Shop() {
 
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {products.map((product) => (
-            <li key={product.slug} className="flex flex-col items-center rounded-[28px] bg-surface p-6 text-center sm:p-8">
+            <li key={product.slug} className="card-soft flex flex-col items-center rounded-[28px] bg-surface p-6 text-center sm:p-8">
               <ProductImage product={product} />
               <p className="eyebrow mt-6">{families[product.family].name}</p>
               <h2 className="mt-2 font-playfair text-2xl font-black">{product.name}</h2>

@@ -190,7 +190,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
 }
 
 export default function Waitlist({ params }: { params: URLSearchParams }) {
-  usePageTitle('Join the waitlist — RootSense')
+  usePageTitle('Join the waitlist · RootSense')
   const product = getProduct(params.get('model') ?? '')
   const selection = product ? readSelection(product, params) : {}
   const valid = product !== undefined && missingChoices(product, selection).length === 0

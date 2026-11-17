@@ -39,15 +39,12 @@ export function ProductImage({ product, colour, aspect = '4 / 5' }: { product: P
 
   if (!src) return <ImageSlot label={label} aspect={aspect} />
 
+  // Solo Sense is photographed at an angle in mid-air, so it gets the light pool but no floor shadow.
+  const floating = product.family === 'solo'
+
   return (
-    <div className="flex w-full items-center justify-center" style={{ aspectRatio: aspect }}>
-      <img
-        src={src}
-        alt={label}
-        loading="lazy"
-        className="h-full w-full object-contain"
-        style={{ filter: 'drop-shadow(0 18px 36px rgba(0,0,0,0.14))' }}
-      />
+    <div className={`product-stage ${floating ? 'product-stage--floating' : ''}`} style={{ aspectRatio: aspect }}>
+      <img src={src} alt={label} width={1120} height={1400} loading="lazy" decoding="async" />
     </div>
   )
 }

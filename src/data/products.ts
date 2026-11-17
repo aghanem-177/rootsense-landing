@@ -98,7 +98,7 @@ export const products: Product[] = [
     inTheBox: ['Solo Sense unit', 'Solo Sense manual', 'Plant handbook'],
     choiceGroups: [COLOUR],
     // Onyx Black is a digital recolour of the Camel Brown photo; swap in a real photo when one exists.
-    images: { 'camel-brown': '/product-nobg.png', 'onyx-black': '/product-onyx-black.png' },
+    images: { 'camel-brown': '/products/solo-sense-camel-brown.webp', 'onyx-black': '/products/solo-sense-onyx-black.webp' },
   },
   {
     slug: 'flow-sense',
@@ -118,7 +118,7 @@ export const products: Product[] = [
     ],
     inTheBox: ['Flow Sense unit', 'Valves', 'Flow Sense manual', 'Plant handbook'],
     choiceGroups: [COLOUR, CLOSING],
-    images: { 'camel-brown': '/flow-sense-camel-brown.webp' },
+    images: { 'camel-brown': '/products/flow-sense-camel-brown.webp' },
   },
   {
     slug: 'flow-sense-plus',
@@ -140,7 +140,7 @@ export const products: Product[] = [
     ],
     inTheBox: ['Flow Sense + unit', 'Valves', 'Flow Sense + manual', 'Plant handbook'],
     choiceGroups: [COLOUR, CLOSING],
-    images: { 'onyx-black': '/flow-sense-plus-onyx-black.webp' },
+    images: { 'onyx-black': '/products/flow-sense-plus-onyx-black.webp' },
   },
   {
     slug: 'terra-sense',
@@ -161,7 +161,7 @@ export const products: Product[] = [
     ],
     inTheBox: ['Terra Sense hub', 'Field receptors', 'Terra Sense manual', 'Plant handbook'],
     choiceGroups: [],
-    images: { default: '/terra-sense.png' },
+    images: { default: '/products/terra-sense.webp' },
   },
 ]
 

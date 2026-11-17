@@ -38,8 +38,8 @@ function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2" aria-label="RootSense home" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="" width={28} height={36} className="h-9 w-auto" />
-          <span className="font-playfair text-lg font-black tracking-tight">RootSense</span>
+          <img src="/brand/logo-mark.png" alt="" width={22} height={44} className="h-11 w-auto" />
+          <span className="font-playfair text-[1.2rem] font-black tracking-tight">RootSense</span>
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">
@@ -95,8 +95,13 @@ function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:grid-cols-3 sm:px-6">
         <div>
-          <p className="font-playfair text-xl font-black">RootSense</p>
-          <p className="mt-2 text-muted">Know your soil.</p>
+          <div className="flex items-center gap-3">
+            <img src="/brand/logo-mark.png" alt="" width={30} height={60} className="h-[60px] w-auto" />
+            <div>
+              <p className="font-playfair text-xl font-black">RootSense</p>
+              <p className="mt-0.5 text-muted">Know your soil.</p>
+            </div>
+          </div>
           <p className="mt-4 max-w-xs text-sm text-muted">Designed, assembled and supported in Egypt.</p>
         </div>
         <nav aria-label="Footer">

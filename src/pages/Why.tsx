@@ -37,7 +37,7 @@ function SourceLine({ source }: { source: Source }) {
 
 function FigureCard({ figure }: { figure: Figure }) {
   return (
-    <div className="flex h-full flex-col rounded-[24px] border border-line bg-surface p-7">
+    <div className="flex h-full flex-col card-soft rounded-[24px] border border-line bg-surface p-7">
       <p className="font-playfair text-[clamp(2.5rem,7vw,3.5rem)] font-black leading-none" style={{ color: 'var(--fam-accent)' }}>
         {figure.value}
       </p>
@@ -63,7 +63,7 @@ function Block({ id, eyebrow, title, intro, children }: { id: string; eyebrow: s
 }
 
 export default function Why() {
-  usePageTitle('Why RootSense — The root cause')
+  usePageTitle('Why RootSense · The root cause')
 
   return (
     <Layout theme="brand">
@@ -71,12 +71,12 @@ export default function Why() {
         <p className="eyebrow">Why RootSense</p>
         <h1 className="mt-4 font-playfair text-[clamp(3rem,10vw,6.5rem)] font-black leading-[0.95]">The root cause.</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-          What decides a harvest — moisture, salt, pH and heat at the root — can't be seen from above. So most growers water by schedule and by eye. That
-          takes real skill, but it can't show what is happening underground.
+          Moisture, salt, pH and heat at the root decide a harvest, and none of them can be seen from above. Most growers water by schedule and by eye.
+          That takes real skill, but it can't show what is happening underground.
         </p>
       </header>
 
-      <Block id="why-pressure" eyebrow="The problem" title="More land to farm. No more water to farm it with.">
+      <Block id="why-pressure" eyebrow="The problem" title="Water is scarce. Salt is common.">
         <div className="grid gap-5 md:grid-cols-3">
           {pressureFigures.map((figure) => (
             <FigureCard key={figure.value} figure={figure} />
@@ -91,7 +91,7 @@ export default function Why() {
             { title: 'Salt that builds up', body: 'Salt collects in the root zone long before the leaves show it. By then the yield has already dropped.' },
             { title: 'Fertiliser washed away', body: 'Too much water carries fertiliser below the roots, where the plant can no longer reach it.' },
           ].map((item) => (
-            <li key={item.title} className="rounded-[24px] border border-line bg-surface p-7">
+            <li key={item.title} className="card-soft rounded-[24px] border border-line bg-surface p-7">
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="mt-2 leading-relaxed text-muted">{item.body}</p>
             </li>
@@ -123,13 +123,13 @@ export default function Why() {
 
       <Block id="why-growers" eyebrow="Our own testing · 2025–2026" title="Shaped by growers.">
         <div className="grid gap-5 md:grid-cols-2">
-          <div className="rounded-[24px] border border-line bg-surface p-7">
+          <div className="card-soft rounded-[24px] border border-line bg-surface p-7">
             <h3 className="text-lg font-semibold">Tried in the field</h3>
             <p className="mt-2 leading-relaxed text-muted">
               We demonstrated three generations of prototype in greenhouses, open fields and home gardens in Egypt.
             </p>
           </div>
-          <div className="rounded-[24px] border border-line bg-surface p-7">
+          <div className="card-soft rounded-[24px] border border-line bg-surface p-7">
             <h3 className="text-lg font-semibold">Changed by what growers said</h3>
             <p className="mt-2 leading-relaxed text-muted">
               Growers gave us feedback at every demonstration, and each new version was revised on what they told us.
@@ -141,7 +141,7 @@ export default function Why() {
       <Block id="why-sdgs" eyebrow="Sustainable Development Goals" title="Where we help.">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {sdgs.map((sdg) => (
-            <li key={sdg.num} className="rounded-[24px] border border-line bg-surface p-7">
+            <li key={sdg.num} className="card-soft rounded-[24px] border border-line bg-surface p-7">
               <img src={sdg.img} alt={`SDG ${sdg.num}: ${sdg.name}`} width={64} height={64} loading="lazy" className="h-16 w-16 rounded-lg" />
               <p className="mt-4 text-sm font-semibold" style={{ color: 'var(--fam-accent)' }}>
                 {sdg.target}

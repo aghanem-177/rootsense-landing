@@ -31,70 +31,70 @@ export const soloBreakdown: Breakdown = {
     },
     {
       id: 'anemometer',
-      title: 'Anemometer',
-      subtitle: 'Wind Speed Monitoring',
+      title: 'Wind gauge',
+      subtitle: 'Wind speed',
       description:
-        'The fan-blade anemometer at the top measures real-time wind speed, helping farmers understand evapotranspiration rates. Higher wind means faster soil drying — so you know when crops need extra attention.',
+        'The small fan at the top measures wind speed. Wind dries soil faster, so a windy reading tells you the plants may need water sooner.',
       spec: 'Range: 0–30 m/s | Accuracy: ±0.3 m/s | Instant updates',
       color: '#4A4A4A',
       labelPos: { x: 55, y: 4, anchor: 'right' },
     },
     {
       id: 'solar',
-      title: 'Solar Panels',
-      subtitle: 'Self-Sustaining Power',
+      title: 'Solar panels',
+      subtitle: 'Power',
       description:
-        'Two high-efficiency monocrystalline solar panels continuously charge the internal battery. No wiring, no battery replacements — the stake powers itself indefinitely under normal daylight conditions.',
+        'Two monocrystalline solar panels charge the battery during the day, so there is no wiring to run and no battery to swap.',
       spec: '2× monocrystalline cells | Output: 5V | Battery life: 12+ months',
       color: '#2A4A7A',
       labelPos: { x: 52, y: 15, anchor: 'right' },
     },
     {
       id: 'soil-screen',
-      title: 'Soil Reading Screen',
-      subtitle: 'Real-Time Soil Intelligence',
+      title: 'Soil screen',
+      subtitle: 'Soil readings',
       description:
-        'The circular LCD displays live soil diagnostics: pH level, salinity (EC), temperature, sunlight levels and Nitrate Availability. Farmers see exactly what their soil needs without any lab testing, technology or smartphone apps.',
+        'The round screen shows pH, salinity, temperature, sunlight and nitrate levels. You can read the soil on the spot, without a lab test or an app.',
       spec: 'pH: 0.1-13.9 | EC (Salinity): % | Nitrate (NPK + Mg): % | Temp: °C',
       color: 'var(--green-mid)',
       labelPos: { x: 40, y: 34, anchor: 'left' },
     },
     {
       id: 'wind-screen',
-      title: 'Wind Speed Screen',
-      subtitle: 'Environmental Monitoring Display',
+      title: 'Air screen',
+      subtitle: 'Air readings',
       description:
-        'The second LCD shows wind speed from the anemometer, battery charge level, and system status. Together with the soil screen, it gives a complete picture of both ground and air conditions.',
+        'The second screen shows the wind speed, the battery level and whether everything is working.',
       spec: 'Wind speed: m/s | Charge: % | Battery status indicator',
       color: '#2E7D3E',
       labelPos: { x: 54, y: 33, anchor: 'right' },
     },
     {
       id: 'probe',
-      title: 'Metal Rod Probe',
-      subtitle: 'Deep Soil Sensing',
+      title: 'Probe rod',
+      subtitle: 'Root-zone sensing',
       description:
-        'The stainless-steel probe rod extends deep into the soil to measure conditions at root level — not just the surface. It delivers accurate readings from where it matters most, ensuring irrigation decisions are based on real root-zone data.',
+        'The stainless-steel rod reaches about 20 cm into the soil, so the readings come from the roots rather than the surface.',
       spec: 'Material: Stainless steel | Depth: ~20cm | Corrosion-resistant',
       color: '#5C6770',
       labelPos: { x: 20, y: 55, anchor: 'right' },
     },
     {
       id: 'body',
-      title: 'Beige Housing',
-      subtitle: 'Rugged Protective Body',
+      title: 'Housing',
+      subtitle: 'The case',
       description:
-        'The two-piece clamshell body houses all electronics, battery, and wiring. Made from UV-resistant polymer, it protects the internals from sun, rain, and dust while keeping the total weight manageable for field deployment.',
+        'The two-piece case holds the electronics, battery and wiring. It is made from UV-resistant plastic to stand up to sun, rain and dust.',
       spec: 'Material: UV-resistant polymer | IP67 rated | Tool-free assembly',
       color: '#7A6440',
       labelPos: { x: 68, y: 47, anchor: 'right' },
     },
     {
       id: 'ceramic',
-      title: 'Ceramic Cone',
-      subtitle: 'Soil Water Tension Sensor & Valve',
+      title: 'Clay cone',
+      subtitle: 'Watering',
       description:
-        'The porous terracotta tip acts as both sensor and valve. Drier soil creates stronger suction, pulling water through the micropores. When soil is moist, suction weakens and flow stops automatically — pure physics, no electricity needed.',
+        'The porous clay tip lets water out into the soil. Dry soil pulls water through it, and as the soil gets wetter the pull weakens and the flow slows, with no power needed.',
       spec: 'Material: Fired terracotta clay | Pore size: 1–3 μm',
       color: 'var(--brown-mid)',
       labelPos: { x: 40, y: 68, anchor: 'left' },
@@ -104,7 +104,7 @@ export const soloBreakdown: Breakdown = {
 
 // Part names come from the owner's labelled internal-layout diagram, which is kept off the site.
 export const flowPlusBreakdown: Breakdown = {
-  assembled: { src: '/flow-sense-plus-onyx-black.webp', alt: 'Flow Sense +, assembled' },
+  assembled: { src: '/products/flow-sense-plus-onyx-black.webp', alt: 'Flow Sense +, assembled' },
   exploded: { src: '/flow-sense-plus-exploded.webp', alt: 'Flow Sense + with its parts separated' },
   parts: [
     {

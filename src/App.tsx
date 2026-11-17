@@ -12,7 +12,7 @@ const ProductPage = lazy(() => import('./pages/ProductPage'))
 const Waitlist = lazy(() => import('./pages/Waitlist'))
 
 function NotFound() {
-  usePageTitle('Page not found — RootSense')
+  usePageTitle('Page not found · RootSense')
   return (
     <Layout theme="brand">
       <div className="mx-auto max-w-xl px-4 py-32 text-center">

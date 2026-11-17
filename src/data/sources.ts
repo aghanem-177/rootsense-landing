@@ -36,7 +36,7 @@ export const pressureFigures: Figure[] = [
   },
   {
     value: '1.38 bn ha',
-    label: "of the world's land is affected by salt — 10.7% of all land area.",
+    label: "of land around the world is affected by salt. That is 10.7% of all land.",
     source: {
       publisher: 'Food and Agriculture Organization of the United Nations (FAO)',
       title: 'FAO launches first major global assessment of salt-affected soils in 50 years',

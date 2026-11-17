@@ -14,7 +14,7 @@ export default function OptionPicker({ group, value, onChange }: OptionPickerPro
     <fieldset>
       <legend className="text-sm font-semibold">
         {group.legend}
-        <span className="font-normal text-muted">{selected ? `: ${selected.label}` : ' — choose one'}</span>
+        <span className="font-normal text-muted">{selected ? `: ${selected.label}` : ': choose one'}</span>
       </legend>
       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3">
         {group.choices.map((choice) => (

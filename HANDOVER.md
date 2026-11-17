@@ -1,4 +1,4 @@
-# RootSense website — handover
+# RootSense website: handover
 
 This is how to run the site, change the everyday things, and look after the preorder waitlist. No coding experience is needed for most of it, only careful editing of the files named below.
 
@@ -42,9 +42,11 @@ The site currently says that growers tried the product and shaped it ("Tried by 
 
 ## Swap or add a product photo
 
-1. Put the image in the `public/` folder. A transparent background works best. `.webp` keeps it small.
+The logo used on the site is `public/brand/logo-mark.png` (a tight crop of `logo.png`). The picture shown when someone shares the site is `public/og-image.jpg` (1200 × 630 px).
+
+1. Put the image in the `public/products/` folder. Use a transparent background, and for a consistent Shop row frame it like the others: 1120 × 1400 px, product centred, its base about 6% above the bottom edge. `.webp` keeps it small.
 2. In `src/data/products.ts`, find the model's `images:` line and point the colour at the file, for example:
-   `images: { 'onyx-black': '/flow-sense-onyx-black.webp', 'camel-brown': '/flow-sense-camel-brown.webp' },`
+   `images: { 'onyx-black': '/products/flow-sense-onyx-black.webp', 'camel-brown': '/products/flow-sense-camel-brown.webp' },`
    Terra Sense has no colours, so it uses `default:`.
 
 A colour with no photo shows an "Image coming soon" spot. Photos still missing: Flow Sense in Onyx Black and Flow Sense + in Camel Brown. The Solo Sense Onyx Black photo is a digital recolour of the Camel Brown one, so replace it with a real photo when you have one.
@@ -96,4 +98,4 @@ The live site (rootsense.co) is built by Vercel from the `main` branch on GitHub
 - Real photos for the missing colours (see above).
 - Whether Flow charges by solar panel as well as its battery. The site currently says "Rechargeable battery".
 - The descriptions on the Flow Sense + breakdown were written from the labelled diagram. Please check the RS485 converter and boost converter wording.
-- Old, unused images still in `public/` (`product.png`, `product-exploded.png`, the `*-raw.png` files, `iot-product.png`, `rootsense-logo-raw.jpg`) can be deleted once you are sure they aren't needed. `product.png` is still the image shown when the site is shared on social media.
+- Old images in `public/` that the site no longer uses can be deleted once you are sure: `product.png`, `product-exploded.png`, `product-assembled-raw.png`, `product-exploded-raw.png`, `product-onyx-black.png`, `iot-product.png`, `terra-sense.png`, `flow-sense-camel-brown.webp`, `flow-sense-plus-onyx-black.webp` and `rootsense-logo-raw.jpg`. Keep `product-nobg.png` and `product-exploded-nobg.png` (the Solo breakdown uses them) and `logo.png` (the full-size original logo).

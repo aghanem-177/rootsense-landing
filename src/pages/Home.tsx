@@ -7,7 +7,7 @@ import Link from '../components/Link'
 import { PreorderLink } from '../components/Preorder'
 import ExplodedView from '../components/ProductExplodeSection'
 import { flowPlusBreakdown, soloBreakdown } from '../data/breakdowns'
-import { families, formatPrice, getProduct, lowestPrice, type FamilyId, type ThemeId } from '../data/products'
+import { families, formatPrice, getProduct, lowestPrice, type FamilyId, type Product, type ThemeId } from '../data/products'
 import { usePageTitle } from '../lib/router'
 
 const solo = getProduct('solo-sense')!
@@ -36,10 +36,28 @@ function SectionHeading({ id, eyebrow, title, intro }: { id: string; eyebrow?: s
   return (
     <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h3 id={id} className="mt-3 font-playfair text-[clamp(2rem,6vw,3.5rem)] font-black leading-[1.05]">
+      <h3 id={id} className="display mt-3 font-playfair text-[clamp(2rem,6vw,3.5rem)] font-black leading-[1.05]">
         {title}
       </h3>
       {intro && <p className="mt-4 text-lg leading-relaxed text-muted">{intro}</p>}
+    </div>
+  )
+}
+
+type LineupItem = { product: Product; colour?: string; caption?: string }
+
+function Lineup({ items }: { items: LineupItem[] }) {
+  const pair = items.length > 1
+  return (
+    <div className={`mx-auto mt-14 grid w-full items-end gap-4 sm:gap-10 ${pair ? 'max-w-[680px] grid-cols-2' : 'max-w-[420px]'}`}>
+      {items.map((item) => (
+        <figure key={item.product.slug + (item.colour ?? '')}>
+          <ProductImage product={item.product} colour={item.colour} />
+          {item.caption && (
+            <figcaption className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-muted">{item.caption}</figcaption>
+          )}
+        </figure>
+      ))}
     </div>
   )
 }
@@ -49,23 +67,24 @@ function FamilyIntro({
   eyebrow,
   body,
   children,
-  image,
+  lineup,
 }: {
   family: FamilyId
   eyebrow: string
   body: string
   children: ReactNode
-  image?: ReactNode
+  lineup: LineupItem[]
 }) {
   const fam = families[family]
   return (
-    <Screen labelledBy={`${family}-title`} className="items-center text-center">
+    <Screen id={family} labelledBy={`${family}-title`} className="items-center text-center">
       <FadeIn>
         <p className="eyebrow">{eyebrow}</p>
       </FadeIn>
       <FadeIn delay={0.05}>
-        <h2 id={`${family}-title`} className="mt-4 font-playfair text-[clamp(4.5rem,18vw,11rem)] font-black leading-[0.9]">
-          {fam.name}.
+        <h2 id={`${family}-title`} className="display mt-4 font-playfair text-[clamp(4.5rem,18vw,11rem)] font-black leading-[0.9]">
+          {fam.name}
+          <span style={{ color: 'var(--fam-accent)' }}>.</span>
         </h2>
       </FadeIn>
       <FadeIn delay={0.1}>
@@ -77,11 +96,9 @@ function FamilyIntro({
       <FadeIn delay={0.2}>
         <div className="mt-9 flex flex-wrap justify-center gap-3">{children}</div>
       </FadeIn>
-      {image && (
-        <FadeIn delay={0.25} className="mx-auto mt-14 w-full max-w-[340px]">
-          {image}
-        </FadeIn>
-      )}
+      <FadeIn delay={0.25} className="w-full">
+        <Lineup items={lineup} />
+      </FadeIn>
     </Screen>
   )
 }
@@ -90,7 +107,7 @@ function Steps({ steps }: { steps: { title: string; body: string }[] }) {
   return (
     <ol className="grid gap-6 md:grid-cols-3">
       {steps.map((step, i) => (
-        <li key={step.title} className="rounded-[24px] border border-line bg-surface p-7">
+        <li key={step.title} className="card-soft rounded-[24px] border border-line bg-surface p-7">
           <span className="font-playfair text-4xl font-black" style={{ color: 'var(--fam-accent)' }} aria-hidden="true">
             {i + 1}
           </span>
@@ -111,10 +128,7 @@ function Check({ yes }: { yes: boolean }) {
       <span className="sr-only">Yes</span>
     </span>
   ) : (
-    <span className="text-muted">
-      <span aria-hidden="true">—</span>
-      <span className="sr-only">No</span>
-    </span>
+    <span className="text-muted">No</span>
   )
 }
 
@@ -127,17 +141,18 @@ const flowComparison: { label: string; flow: ReactNode; plus: ReactNode }[] = [
 ]
 
 export default function Home() {
-  usePageTitle('RootSense — Know Your Soil')
+  usePageTitle('RootSense · Know your soil')
 
   return (
     <Layout theme="terra">
-      {/* Opening */}
       <div data-family="brand" className="theme-band">
         <GroundOpening />
+      </div>
 
-        {/* The three families */}
+      {/* The soil in the opening settles into this cream, so there is no band here. */}
+      <div data-family="solo" className="theme-band">
         <Screen id="senses" labelledBy="senses-title">
-          <SectionHeading id="senses-title" eyebrow="Meet the Senses" title="Three Senses. One way of working." intro="Read the soil at the root, then water by what it says. Pick the size that fits your ground." />
+          <SectionHeading id="senses-title" eyebrow="Meet the Senses" title="Three Senses. One way of working." intro="All three read the soil at the root. Choose the one that suits your ground." />
           <ul className="grid gap-5 md:grid-cols-3">
             {(['solo', 'flow', 'terra'] as const).map((id, i) => (
               <li key={id}>
@@ -145,10 +160,10 @@ export default function Home() {
                   <a
                     href={`#${id}`}
                     data-family={id}
-                    className="flex h-full flex-col rounded-[28px] p-8 transition-transform hover:-translate-y-1"
+                    className="card-soft flex h-full flex-col rounded-[28px] p-8 transition-transform duration-300 hover:-translate-y-1"
                     style={{ background: 'var(--fam-bg)', color: 'var(--fam-ink)', border: '1px solid var(--fam-line)' }}
                   >
-                    <span className="font-playfair text-5xl font-black">{families[id].name}</span>
+                    <span className="display font-playfair text-5xl font-black">{families[id].name}</span>
                     <span className="mt-2 font-playfair text-xl italic">{families[id].line}</span>
                     <span className="mt-5 text-muted">{families[id].forWho}</span>
                     <span className="mt-auto pt-8 text-sm font-semibold" style={{ color: 'var(--fam-accent)' }}>
@@ -160,15 +175,17 @@ export default function Home() {
             ))}
           </ul>
         </Screen>
-      </div>
 
-      {/* Solo */}
-      <Blend from="brand" to="solo" />
-      <div id="solo" data-family="solo" className="theme-band">
-        <FamilyIntro family="solo" eyebrow={`Solo Sense · ${formatPrice(solo.price)}`} body={solo.summary + ' No phone, no internet, no wiring.'}>
-          <PreorderLink to={`/shop/${solo.slug}`}>
-            Preorder Solo Sense
-          </PreorderLink>
+        <FamilyIntro
+          family="solo"
+          eyebrow={`Solo Sense · ${formatPrice(solo.price)}`}
+          body={solo.summary + ' No phone, no internet, no wiring.'}
+          lineup={[
+            { product: solo, colour: 'camel-brown', caption: 'Camel Brown' },
+            { product: solo, colour: 'onyx-black', caption: 'Onyx Black' },
+          ]}
+        >
+          <PreorderLink to={`/shop/${solo.slug}`}>Preorder Solo Sense</PreorderLink>
           <a href="#solo-inside" className="btn-secondary">
             See inside
           </a>
@@ -180,7 +197,7 @@ export default function Home() {
             steps={[
               { title: 'Dry soil pulls', body: 'As the soil dries, it draws water out through the wall of the clay cone.' },
               { title: 'Wet soil lets go', body: 'As the soil gets wetter, the pull gets weaker and the flow slows down.' },
-              { title: 'Nothing to switch', body: 'The cone does this by itself. No moving parts and no power needed to water.' },
+              { title: 'Nothing to switch', body: 'The cone does this by itself, with no moving parts and no power.' },
             ]}
           />
         </Screen>
@@ -191,50 +208,48 @@ export default function Home() {
         </Screen>
       </div>
 
-      {/* Flow */}
       <Blend from="solo" to="flow" />
-      <div id="flow" data-family="flow" className="theme-band">
+      <div data-family="flow" className="theme-band">
         <FamilyIntro
           family="flow"
           eyebrow={`Flow Sense · from ${formatPrice(flow.price)}`}
           body="Flow reads the soil at the root and opens the water only when the roots need it. Control stays on the unit, so watering carries on if your phone is off."
+          lineup={[
+            { product: flow, colour: 'camel-brown', caption: 'Flow Sense' },
+            { product: flowPlus, colour: 'onyx-black', caption: 'Flow Sense +' },
+          ]}
         >
-          <PreorderLink to={`/shop/${flow.slug}`}>
-            Preorder Flow Sense
-          </PreorderLink>
-          <PreorderLink to={`/shop/${flowPlus.slug}`}>
-            Preorder Flow Sense +
-          </PreorderLink>
+          <PreorderLink to={`/shop/${flow.slug}`}>Preorder Flow Sense</PreorderLink>
+          <PreorderLink to={`/shop/${flowPlus.slug}`}>Preorder Flow Sense +</PreorderLink>
         </FamilyIntro>
 
         <Screen labelledBy="flow-compare">
           <SectionHeading id="flow-compare" eyebrow="Two models" title="Cable or wireless." intro="Both water by the soil readings and both work with the app. Flow Sense + drops the cable and handles more servos." />
           <div className="grid gap-6 sm:grid-cols-2">
             {[flow, flowPlus].map((p) => (
-              <div key={p.slug} className="flex flex-col rounded-[28px] border border-line bg-surface p-6 sm:p-8">
-                <ProductImage product={p} aspect="1 / 1" />
-                <h4 className="mt-6 font-playfair text-3xl font-black">{p.name}</h4>
+              <div key={p.slug} className="card-soft flex flex-col rounded-[28px] border border-line bg-surface p-7 sm:p-9">
+                <h4 className="display font-playfair text-3xl font-black">{p.name}</h4>
                 <p className="mt-1 text-lg">{formatPrice(p.price)}</p>
-                <p className="mt-3 leading-relaxed text-muted">{p.summary}</p>
-                <PreorderLink to={`/shop/${p.slug}`} className="mt-6 self-start">
+                <p className="mt-4 flex-1 leading-relaxed text-muted">{p.summary}</p>
+                <PreorderLink to={`/shop/${p.slug}`} className="mt-7 self-start">
                   Preorder
                 </PreorderLink>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 overflow-x-auto rounded-[24px] border border-line bg-surface">
+          <div className="card-soft mt-8 overflow-x-auto rounded-[24px] border border-line bg-surface">
             <table className="w-full text-left">
               <caption className="px-3 pt-6 text-left text-lg font-semibold sm:px-6">What Flow Sense + adds</caption>
               <thead>
                 <tr className="text-sm text-muted">
-                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
+                  <th scope="col" className="px-3 py-4 font-medium sm:px-6">
                     <span className="sr-only">Feature</span>
                   </th>
-                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
+                  <th scope="col" className="px-3 py-4 font-medium sm:px-6">
                     Flow Sense
                   </th>
-                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
+                  <th scope="col" className="px-3 py-4 font-medium sm:px-6">
                     Flow Sense +
                   </th>
                 </tr>
@@ -242,11 +257,11 @@ export default function Home() {
               <tbody>
                 {flowComparison.map((row) => (
                   <tr key={row.label} className="border-t border-line">
-                    <th scope="row" className="px-3 py-4 sm:px-6 font-medium">
+                    <th scope="row" className="px-3 py-4 font-medium sm:px-6">
                       {row.label}
                     </th>
                     <td className="px-3 py-4 sm:px-6">{row.flow}</td>
-                    <td className="px-3 py-4 sm:px-6 font-semibold">{row.plus}</td>
+                    <td className="px-3 py-4 font-semibold sm:px-6">{row.plus}</td>
                   </tr>
                 ))}
               </tbody>
@@ -260,18 +275,15 @@ export default function Home() {
         </Screen>
       </div>
 
-      {/* Terra */}
       <Blend from="flow" to="terra" />
-      <div id="terra" data-family="terra" className="theme-band">
+      <div data-family="terra" className="theme-band">
         <FamilyIntro
           family="terra"
           eyebrow={`Terra Sense · ${formatPrice(terra.price)} · Farm scale`}
           body={terra.summary + ' Made with commercial farms in mind.'}
-          image={<ProductImage product={terra} />}
+          lineup={[{ product: terra }]}
         >
-          <PreorderLink to={`/shop/${terra.slug}`}>
-            Preorder Terra Sense
-          </PreorderLink>
+          <PreorderLink to={`/shop/${terra.slug}`}>Preorder Terra Sense</PreorderLink>
         </FamilyIntro>
 
         <Screen labelledBy="terra-how">
@@ -285,19 +297,16 @@ export default function Home() {
           />
           <p className="mt-8 text-center text-muted">Installation and a follow-up visit are included.</p>
         </Screen>
-      </div>
 
-      {/* Closing */}
-      <div data-family="terra" className="theme-band">
         <Screen labelledBy="closing-title" className="items-center text-center">
           <p className="eyebrow">Shaped by growers</p>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
             Three generations of RootSense were tried in greenhouses, open fields and home gardens. Each one changed after growers told us what worked.
           </p>
-          <h2 id="closing-title" className="mt-12 font-playfair text-[clamp(2.5rem,8vw,5rem)] font-black leading-[1]">
+          <h2 id="closing-title" className="display mt-12 font-playfair text-[clamp(2.5rem,8vw,5rem)] font-black leading-[1]">
             Find the one that fits your ground.
           </h2>
-          <Link to="/shop" className="btn-primary mt-10">
+          <Link to="/shop" className="btn-primary btn-lg mt-10">
             Go to the shop
           </Link>
         </Screen>
