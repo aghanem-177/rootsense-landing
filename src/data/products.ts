@@ -141,7 +141,7 @@ export const products: Product[] = [
     ],
     inTheBox: ['Flow Sense + unit', 'Valves', 'Flow Sense + manual', 'Plant handbook'],
     choiceGroups: [COLOUR, CLOSING],
-    images: { 'onyx-black': '/products/flow-sense-plus-onyx-black.webp' },
+    images: { 'camel-brown': '/products/flow-sense-plus-camel-brown.webp', 'onyx-black': '/products/flow-sense-plus-onyx-black.webp' },
   },
   {
     slug: 'terra-sense',
