@@ -66,7 +66,7 @@ export const soloBreakdown: Breakdown = {
       description:
         'The second LCD shows wind speed from the anemometer, battery charge level, and system status. Together with the soil screen, it gives a complete picture of both ground and air conditions.',
       spec: 'Wind speed: m/s | Charge: % | Battery status indicator',
-      color: 'var(--green-bright)',
+      color: '#2E7D3E',
       labelPos: { x: 54, y: 33, anchor: 'right' },
     },
     {
@@ -76,7 +76,7 @@ export const soloBreakdown: Breakdown = {
       description:
         'The stainless-steel probe rod extends deep into the soil to measure conditions at root level — not just the surface. It delivers accurate readings from where it matters most, ensuring irrigation decisions are based on real root-zone data.',
       spec: 'Material: Stainless steel | Depth: ~20cm | Corrosion-resistant',
-      color: '#8A9298',
+      color: '#5C6770',
       labelPos: { x: 20, y: 55, anchor: 'right' },
     },
     {
@@ -86,7 +86,7 @@ export const soloBreakdown: Breakdown = {
       description:
         'The two-piece clamshell body houses all electronics, battery, and wiring. Made from UV-resistant polymer, it protects the internals from sun, rain, and dust while keeping the total weight manageable for field deployment.',
       spec: 'Material: UV-resistant polymer | IP67 rated | Tool-free assembly',
-      color: '#B89A6A',
+      color: '#7A6440',
       labelPos: { x: 68, y: 47, anchor: 'right' },
     },
     {

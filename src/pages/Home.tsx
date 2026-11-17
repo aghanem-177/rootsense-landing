@@ -224,17 +224,17 @@ export default function Home() {
           </div>
 
           <div className="mt-12 overflow-x-auto rounded-[24px] border border-line bg-surface">
-            <table className="w-full min-w-[480px] text-left">
-              <caption className="px-6 pt-6 text-left text-lg font-semibold">What Flow Sense + adds</caption>
+            <table className="w-full text-left">
+              <caption className="px-3 pt-6 text-left text-lg font-semibold sm:px-6">What Flow Sense + adds</caption>
               <thead>
                 <tr className="text-sm text-muted">
-                  <th scope="col" className="px-6 py-4 font-medium">
+                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
                     <span className="sr-only">Feature</span>
                   </th>
-                  <th scope="col" className="px-6 py-4 font-medium">
+                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
                     Flow Sense
                   </th>
-                  <th scope="col" className="px-6 py-4 font-medium">
+                  <th scope="col" className="px-3 py-4 sm:px-6 font-medium">
                     Flow Sense +
                   </th>
                 </tr>
@@ -242,11 +242,11 @@ export default function Home() {
               <tbody>
                 {flowComparison.map((row) => (
                   <tr key={row.label} className="border-t border-line">
-                    <th scope="row" className="px-6 py-4 font-medium">
+                    <th scope="row" className="px-3 py-4 sm:px-6 font-medium">
                       {row.label}
                     </th>
-                    <td className="px-6 py-4">{row.flow}</td>
-                    <td className="px-6 py-4 font-semibold">{row.plus}</td>
+                    <td className="px-3 py-4 sm:px-6">{row.flow}</td>
+                    <td className="px-3 py-4 sm:px-6 font-semibold">{row.plus}</td>
                   </tr>
                 ))}
               </tbody>

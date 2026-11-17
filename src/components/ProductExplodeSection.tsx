@@ -333,7 +333,7 @@ export default function ProductExplodeSection({ breakdown }: { breakdown: Breakd
               <p
                 className="font-dm"
                 style={{
-                  color: 'var(--text-tertiary)',
+                  color: 'var(--text-secondary)',
                   fontSize: '0.78rem',
                   borderTop: '1px solid var(--border-light)',
                   paddingTop: 16,
@@ -359,7 +359,7 @@ export default function ProductExplodeSection({ breakdown }: { breakdown: Breakd
                   fontSize: '0.72rem',
                   padding: '6px 14px',
                   background: i === activeState ? parts[activeState].color : 'var(--page-bg)',
-                  color: i === activeState ? '#FFFFFF' : 'var(--text-tertiary)',
+                  color: i === activeState ? '#FFFFFF' : 'var(--text-secondary)',
                   border: `1px solid ${i === activeState ? parts[activeState].color : 'var(--sand)'}`,
                   transform: i === activeState ? 'scale(1.05)' : 'scale(1)',
                 }}
