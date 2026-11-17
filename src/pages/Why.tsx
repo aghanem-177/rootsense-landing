@@ -18,10 +18,27 @@ const reasons = [
 ]
 
 const sdgs = [
-  { num: 6, img: '/sdg-6.jpg', name: 'Clean water', target: 'Target 6.4', body: 'Water is released only when the soil needs it, from one pot to a whole farm.' },
-  { num: 2, img: '/sdg-2.jpg', name: 'Zero hunger', target: 'Targets 2.3 and 2.4', body: 'A model at EGP 850 for small growers, and pH and salinity readings that warn before salt harms the soil.' },
-  { num: 12, img: '/sdg-12.jpg', name: 'Responsible use', target: 'Target 12.2', body: 'Less water and fertiliser per kilo grown, and parts that are repaired rather than thrown away.' },
-  { num: 13, img: '/sdg-13.jpg', name: 'Climate action', target: 'Target 13.1', body: 'Readings and automatic watering respond to heat and dry spells as they happen.' },
+  {
+    num: 9,
+    img: '/sdg/sdg-9.webp',
+    name: 'Industry, innovation and infrastructure',
+    target: 'Target 9.4',
+    body: 'Terra Sense adds soil-led control to the drip and pivot systems farms already own, instead of replacing them. Every Sense is designed and assembled in Egypt.',
+  },
+  {
+    num: 11,
+    img: '/sdg/sdg-11.webp',
+    name: 'Sustainable cities and communities',
+    target: 'Goal 11',
+    body: 'Solo Sense needs no wiring, phone or mains power, so balconies, rooftops and community gardens in towns and cities get water when the soil needs it.',
+  },
+  {
+    num: 12,
+    img: '/sdg/sdg-12.webp',
+    name: 'Responsible consumption and production',
+    target: 'Target 12.2',
+    body: 'Less water and fertiliser used per kilo grown, and parts that can be repaired, with electronics taken back at the end of their life.',
+  },
 ]
 
 function SourceLine({ source }: { source: Source }) {
@@ -139,10 +156,10 @@ export default function Why() {
       </Block>
 
       <Block id="why-sdgs" eyebrow="Sustainable Development Goals" title="Where we help.">
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-5 md:grid-cols-3">
           {sdgs.map((sdg) => (
             <li key={sdg.num} className="card-soft rounded-[24px] border border-line bg-surface p-7">
-              <img src={sdg.img} alt={`SDG ${sdg.num}: ${sdg.name}`} width={64} height={64} loading="lazy" className="h-16 w-16 rounded-lg" />
+              <img src={sdg.img} alt={`SDG ${sdg.num}: ${sdg.name}`} width={88} height={88} loading="lazy" decoding="async" className="h-[88px] w-[88px] rounded-lg" />
               <p className="mt-4 text-sm font-semibold" style={{ color: 'var(--fam-accent)' }}>
                 {sdg.target}
               </p>
