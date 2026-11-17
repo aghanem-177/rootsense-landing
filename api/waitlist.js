@@ -23,8 +23,11 @@ export async function POST(request) {
     model: clean(body.model, 60),
     colour: clean(body.colour, 60),
     closing: clean(body.closing, 60),
+    addOns: clean(body.addOns, 200) || 'None offered',
     price: Number.isFinite(price) ? price : null,
   }
+  // Sign-ups from @example.com addresses are our own tests and are marked so they can be deleted.
+  entry.test = entry.email.endsWith('@example.com')
 
   if (entry.name.length < 2 || !EMAIL_PATTERN.test(entry.email) || !entry.model || entry.price === null) {
     return Response.json({ ok: false, error: 'invalid' }, { status: 400 })

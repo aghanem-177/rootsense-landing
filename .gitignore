@@ -27,4 +27,4 @@ dist-ssr
 .claude/
 
 # Local waitlist test entries
-waitlist-dev.jsonl
+waitlist-dev.csv

@@ -45,16 +45,19 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
   const [status, setStatus] = useState<'idle' | 'saving' | 'done' | 'failed'>('idle')
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
+  // State updates land after a re-render, so a ref is what stops a fast double-click sending twice.
+  const savingRef = useRef(false)
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
-    if (status === 'saving') return
+    if (savingRef.current) return
 
     const found = validate(name, email)
     setErrors(found)
     if (found.name) return nameRef.current?.focus()
     if (found.email) return emailRef.current?.focus()
 
+    savingRef.current = true
     setStatus('saving')
     try {
       const res = await fetch('/api/waitlist', {
@@ -74,6 +77,8 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
       setStatus(res.ok && data?.ok ? 'done' : 'failed')
     } catch {
       setStatus('failed')
+    } finally {
+      savingRef.current = false
     }
   }
 
