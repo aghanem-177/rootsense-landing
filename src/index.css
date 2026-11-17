@@ -31,6 +31,8 @@
   --bg-solo: #F5F0E8;
   --bg-flow: #85ACA1;
   --bg-terra: #1C0E06;
+  --preorder: #A95534;
+  --preorder-hover: #90482C;
 }
 
 [data-family='brand'] {
@@ -220,6 +222,79 @@
     cursor: not-allowed;
   }
 
+  /* Preorder actions only: terracotta (a shade of brand brown-mid), serif caps, arrow chip. */
+  .btn-preorder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 52px;
+    max-width: 100%;
+    padding: 0 0.5rem 0 1.5rem;
+    border: 1.5px solid var(--brown-dark);
+    border-radius: 999px;
+    background: var(--preorder);
+    color: #FFFFFF;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 20px -10px rgba(92, 58, 30, 0.7);
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .btn-preorder-chip {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    transition: transform 0.18s ease;
+  }
+
+  .btn-preorder:hover:not(:disabled) {
+    background: var(--preorder-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(92, 58, 30, 0.8);
+  }
+
+  .btn-preorder:hover:not(:disabled) .btn-preorder-chip {
+    transform: translateX(4px);
+  }
+
+  .btn-preorder:active:not(:disabled) {
+    transform: scale(0.97);
+    transition-duration: 0.1s;
+  }
+
+  .btn-preorder:focus-visible {
+    outline: 3px solid var(--fam-ink);
+    outline-offset: 3px;
+  }
+
+  .btn-preorder:disabled {
+    padding: 0 1.5rem;
+    border: 1.5px dashed var(--text-tertiary);
+    background: var(--sand);
+    color: var(--text-secondary);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .btn-preorder:disabled .btn-preorder-chip {
+    display: none;
+  }
+
+  .btn-preorder[aria-busy='true'] {
+    opacity: 0.8;
+    cursor: progress;
+  }
+
   .btn-lg {
     min-height: 52px;
     padding: 0 2rem;
@@ -348,6 +423,12 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .btn-preorder:hover:not(:disabled),
+  .btn-preorder:active:not(:disabled),
+  .btn-preorder:hover:not(:disabled) .btn-preorder-chip {
+    transform: none;
   }
 
   *, *::before, *::after {

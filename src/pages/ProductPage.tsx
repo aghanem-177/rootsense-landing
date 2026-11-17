@@ -3,6 +3,7 @@ import { ProductImage } from '../components/ImageSlot'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import OptionPicker from '../components/OptionPicker'
+import { PreorderButton } from '../components/Preorder'
 import { families, formatPrice, missingChoices, waitlistUrl, type Product, type Selection } from '../data/products'
 import { navigate, usePageTitle } from '../lib/router'
 
@@ -55,15 +56,15 @@ export default function ProductPage({ product }: { product: Product }) {
             )}
 
             <div className="mt-10">
-              <button
+              <PreorderButton
                 type="button"
-                className="btn-primary w-full sm:w-auto sm:min-w-[240px]"
+                className="w-full sm:w-auto sm:min-w-[240px]"
                 disabled={!ready}
                 aria-describedby="preorder-hint"
                 onClick={() => navigate(waitlistUrl(product, selection))}
               >
                 Preorder
-              </button>
+              </PreorderButton>
               <p id="preorder-hint" className="mt-3 text-sm text-muted" aria-live="polite">
                 {ready
                   ? 'No payment now. This reserves your place on the waitlist.'

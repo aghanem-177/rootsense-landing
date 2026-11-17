@@ -4,6 +4,7 @@ import GroundOpening from '../components/GroundOpening'
 import { ProductImage } from '../components/ImageSlot'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
+import { PreorderLink } from '../components/Preorder'
 import ExplodedView from '../components/ProductExplodeSection'
 import { flowPlusBreakdown, soloBreakdown } from '../data/breakdowns'
 import { families, formatPrice, getProduct, lowestPrice, type FamilyId, type ThemeId } from '../data/products'
@@ -165,9 +166,9 @@ export default function Home() {
       <Blend from="brand" to="solo" />
       <div id="solo" data-family="solo" className="theme-band">
         <FamilyIntro family="solo" eyebrow={`Solo Sense · ${formatPrice(solo.price)}`} body={solo.summary + ' No phone, no internet, no wiring.'}>
-          <Link to={`/shop/${solo.slug}`} className="btn-primary">
+          <PreorderLink to={`/shop/${solo.slug}`}>
             Preorder Solo Sense
-          </Link>
+          </PreorderLink>
           <a href="#solo-inside" className="btn-secondary">
             See inside
           </a>
@@ -198,12 +199,12 @@ export default function Home() {
           eyebrow={`Flow Sense · from ${formatPrice(flow.price)}`}
           body="Flow reads the soil at the root and opens the water only when the roots need it. Control stays on the unit, so watering carries on if your phone is off."
         >
-          <Link to={`/shop/${flow.slug}`} className="btn-primary">
+          <PreorderLink to={`/shop/${flow.slug}`}>
             Preorder Flow Sense
-          </Link>
-          <Link to={`/shop/${flowPlus.slug}`} className="btn-secondary">
+          </PreorderLink>
+          <PreorderLink to={`/shop/${flowPlus.slug}`}>
             Preorder Flow Sense +
-          </Link>
+          </PreorderLink>
         </FamilyIntro>
 
         <Screen labelledBy="flow-compare">
@@ -215,9 +216,9 @@ export default function Home() {
                 <h4 className="mt-6 font-playfair text-3xl font-black">{p.name}</h4>
                 <p className="mt-1 text-lg">{formatPrice(p.price)}</p>
                 <p className="mt-3 leading-relaxed text-muted">{p.summary}</p>
-                <Link to={`/shop/${p.slug}`} className="btn-primary mt-6 self-start">
+                <PreorderLink to={`/shop/${p.slug}`} className="mt-6 self-start">
                   Preorder
-                </Link>
+                </PreorderLink>
               </div>
             ))}
           </div>
@@ -268,9 +269,9 @@ export default function Home() {
           body={terra.summary + ' Made with commercial farms in mind.'}
           image={<ProductImage product={terra} />}
         >
-          <Link to={`/shop/${terra.slug}`} className="btn-primary">
+          <PreorderLink to={`/shop/${terra.slug}`}>
             Preorder Terra Sense
-          </Link>
+          </PreorderLink>
         </FamilyIntro>
 
         <Screen labelledBy="terra-how">

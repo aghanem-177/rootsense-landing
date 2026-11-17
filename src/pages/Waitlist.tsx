@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent } from 'react'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
+import { PreorderButton } from '../components/Preorder'
 import { choiceLabel, formatPrice, getProduct, missingChoices, readSelection, type Product, type Selection } from '../data/products'
 import { usePageTitle } from '../lib/router'
 
@@ -166,9 +167,9 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
         </p>
       )}
 
-      <button type="submit" className="btn-primary w-full" disabled={status === 'saving'}>
+      <PreorderButton type="submit" className="w-full" aria-busy={status === 'saving'} aria-disabled={status === 'saving'}>
         {status === 'saving' ? 'Saving…' : 'Reserve my spot'}
-      </button>
+      </PreorderButton>
 
       <p className="text-sm leading-relaxed text-muted">
         This reserves a place on the waitlist. No payment is taken. We collect your name, your email and the model you chose only to contact you
