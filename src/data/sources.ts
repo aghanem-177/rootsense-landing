@@ -46,18 +46,28 @@ export const pressureFigures: Figure[] = [
   },
 ]
 
-export const researchFigure: Figure = {
-  value: '15–51%',
-  label:
-    'less irrigation water when drip watering was switched by soil-moisture sensors instead of a fixed timer, in a tomato field trial on sandy soil in Florida.',
-  source: {
-    publisher: 'Zotarelli et al., Agricultural Water Management 96(1), pp. 23–34',
-    title:
-      'Tomato yield, biomass accumulation, root distribution and irrigation water use efficiency on a sandy soil, as affected by nitrogen rate and irrigation scheduling',
-    year: 2009,
-    url: 'https://ideas.repec.org/a/eee/agiwat/v96y2009i1p23-34.html',
-  },
+const zotarelli2009: Source = {
+  publisher: 'Zotarelli et al., Agricultural Water Management 96(1), pp. 23–34',
+  title:
+    'Tomato yield, biomass accumulation, root distribution and irrigation water use efficiency on a sandy soil, as affected by nitrogen rate and irrigation scheduling',
+  year: 2009,
+  url: 'https://ideas.repec.org/a/eee/agiwat/v96y2009i1p23-34.html',
 }
+
+// Both figures come from the same trial: sensor-switched drip versus a fixed daily timer.
+export const researchFigures: Figure[] = [
+  {
+    value: '15–51%',
+    label:
+      'less irrigation water when drip watering was switched by soil-moisture sensors instead of a fixed timer, in a tomato field trial on sandy soil in Florida.',
+    source: zotarelli2009,
+  },
+  {
+    value: '11–80%',
+    label: 'higher tomato yield in the same trial when watering was switched by soil-moisture sensors instead of a fixed daily timer.',
+    source: zotarelli2009,
+  },
+]
 
 export const sdgSource: Source = {
   publisher: 'United Nations',

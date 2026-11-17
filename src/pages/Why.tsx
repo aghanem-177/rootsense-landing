@@ -3,7 +3,7 @@ import FadeIn from '../components/FadeIn'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { formatPrice, products } from '../data/products'
-import { pressureFigures, researchFigure, sdgSource, type Figure, type Source } from '../data/sources'
+import { pressureFigures, researchFigures, sdgSource, type Figure, type Source } from '../data/sources'
 import { usePageTitle } from '../lib/router'
 
 const priceRange = `${formatPrice(Math.min(...products.map((p) => p.price)))} to ${formatPrice(Math.max(...products.map((p) => p.price)))}`
@@ -119,11 +119,13 @@ export default function Why() {
       <Block
         id="why-research"
         eyebrow="What the research shows"
-        title="Watering by the soil uses less water."
-        intro="Published field trials have compared watering by soil readings with watering by a timer."
+        title="Less water, and more to harvest."
+        intro="A published field trial compared drip watering switched by soil-moisture sensors with watering on a fixed timer."
       >
-        <div className="max-w-xl">
-          <FigureCard figure={researchFigure} />
+        <div className="grid gap-5 md:grid-cols-2">
+          {researchFigures.map((figure) => (
+            <FigureCard key={figure.value} figure={figure} />
+          ))}
         </div>
       </Block>
 
