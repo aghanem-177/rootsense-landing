@@ -118,7 +118,8 @@ export const products: Product[] = [
     ],
     inTheBox: ['Flow Sense unit', 'Valves', 'Flow Sense manual', 'Plant handbook'],
     choiceGroups: [COLOUR, CLOSING],
-    images: { 'camel-brown': '/products/flow-sense-camel-brown.webp' },
+    // Onyx Black is a digital recolour of the Camel Brown photo; swap in a real photo when one exists.
+    images: { 'camel-brown': '/products/flow-sense-camel-brown.webp', 'onyx-black': '/products/flow-sense-onyx-black.webp' },
   },
   {
     slug: 'flow-sense-plus',
