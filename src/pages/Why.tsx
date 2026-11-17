@@ -22,7 +22,7 @@ const sdgs = [
     num: 9,
     img: '/sdg/sdg-9.webp',
     name: 'Industry, innovation and infrastructure',
-    target: 'Target 9.4',
+    target: 'Goal 9',
     body: 'Terra Sense adds soil-led control to the drip and pivot systems farms already own, instead of replacing them. Every Sense is designed and assembled in Egypt.',
   },
   {
@@ -36,7 +36,7 @@ const sdgs = [
     num: 12,
     img: '/sdg/sdg-12.webp',
     name: 'Responsible consumption and production',
-    target: 'Target 12.2',
+    target: 'Goal 12',
     body: 'Less water and fertiliser used per kilo grown, and parts that can be repaired, with electronics taken back at the end of their life.',
   },
 ]
