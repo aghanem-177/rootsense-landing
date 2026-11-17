@@ -40,7 +40,7 @@ function BurstParticles({ active }: { active: boolean }) {
       {/* Central flash */}
       <motion.div
         className="absolute rounded-full"
-        style={{ width: 120, height: 120, background: 'radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%)' }}
+        style={{ width: 120, height: 120, background: 'radial-gradient(circle, rgba(243,237,225,0.7) 0%, transparent 70%)' }}
         initial={{ scale: 0, opacity: 1 }}
         animate={{ scale: 3, opacity: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -85,7 +85,7 @@ function PartLabel({
         <div
           className="w-3 h-3 sm:w-4 sm:h-4 rounded-full border-[1.5px] sm:border-2 transition-all duration-300"
           style={{
-            background: isActive ? part.color : 'rgba(255,255,255,0.95)',
+            background: isActive ? part.color : 'rgba(243,237,225,0.96)',
             borderColor: part.color,
             boxShadow: isActive
               ? `0 0 0 6px ${part.color}25, 0 0 12px ${part.color}40`
@@ -120,7 +120,7 @@ function PartLabel({
           style={{
             fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)',
             letterSpacing: '0.04em',
-            background: isActive ? part.color : 'rgba(255,255,255,0.92)',
+            background: isActive ? part.color : 'rgba(243,237,225,0.95)',
             color: isActive ? '#FFFFFF' : 'var(--text-secondary)',
             boxShadow: isActive
               ? `0 4px 16px ${part.color}35`

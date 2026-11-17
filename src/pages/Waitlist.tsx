@@ -101,7 +101,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
   }
 
   const fieldClass = (hasError: boolean) =>
-    `mt-2 block w-full rounded-2xl border bg-surface px-4 py-3.5 text-base ${hasError ? 'border-[var(--fam-error)]' : 'border-line'}`
+    `mt-2 block w-full rounded-2xl border bg-surface px-4 py-3.5 text-base ${hasError ? 'border-[var(--fam-error)]' : 'field-border'}`
 
   return (
     <>
