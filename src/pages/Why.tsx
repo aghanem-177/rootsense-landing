@@ -9,7 +9,7 @@ import { usePageTitle } from '../lib/router'
 const priceRange = `${formatPrice(Math.min(...products.map((p) => p.price)))} to ${formatPrice(Math.max(...products.map((p) => p.price)))}`
 
 const reasons = [
-  { title: 'A size for every grower', body: `One family of products, from ${priceRange}: a single pot, a greenhouse tunnel or a whole farm.` },
+  { title: 'A Sense for every plot', body: `One range of Senses, from ${priceRange}: a single pot, a greenhouse tunnel or a whole farm.` },
   { title: 'Reads and waters in one unit', body: 'The same unit that reads the root zone also delivers the water, so the two always agree.' },
   { title: 'Works without a phone', body: 'Solo Sense needs no phone, internet or mains power. Flow keeps watering if the connection drops.' },
   { title: 'Arabic and English', body: 'Every model comes with its own manual and a plant handbook, written in plain Arabic and English.' },

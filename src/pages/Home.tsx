@@ -135,8 +135,8 @@ export default function Home() {
         <GroundOpening />
 
         {/* The three families */}
-        <Screen id="families" labelledBy="families-title">
-          <SectionHeading id="families-title" eyebrow="The range" title="Three families. One way of working." intro="Read the soil at the root, then water by what it says. Pick the size that fits your ground." />
+        <Screen id="senses" labelledBy="senses-title">
+          <SectionHeading id="senses-title" eyebrow="Meet the Senses" title="Three Senses. One way of working." intro="Read the soil at the root, then water by what it says. Pick the size that fits your ground." />
           <ul className="grid gap-5 md:grid-cols-3">
             {(['solo', 'flow', 'terra'] as const).map((id, i) => (
               <li key={id}>
@@ -264,8 +264,8 @@ export default function Home() {
       <div id="terra" data-family="terra" className="theme-band">
         <FamilyIntro
           family="terra"
-          eyebrow={`Terra Sense · ${formatPrice(terra.price)} · For agribusiness`}
-          body={terra.summary + ' Built for commercial farms.'}
+          eyebrow={`Terra Sense · ${formatPrice(terra.price)} · Farm scale`}
+          body={terra.summary + ' Made with commercial farms in mind.'}
           image={<ProductImage product={terra} />}
         >
           <Link to={`/shop/${terra.slug}`} className="btn-primary">

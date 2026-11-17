@@ -60,19 +60,19 @@ export const families: Record<FamilyId, Family> = {
     id: 'solo',
     name: 'Solo',
     line: 'Makes sense on its own.',
-    forWho: 'Pots, home gardens and single beds',
+    forWho: 'Made with pots, home gardens and single beds in mind',
   },
   flow: {
     id: 'flow',
     name: 'Flow',
     line: 'Sense that moves water.',
-    forWho: 'Greenhouse tunnels, drip lines and small farms',
+    forWho: 'A natural fit for greenhouse tunnels, drip lines and small farms',
   },
   terra: {
     id: 'terra',
     name: 'Terra',
     line: 'Sense by the feddan.',
-    forWho: 'Commercial farms and agribusinesses',
+    forWho: 'Made with commercial farms and agribusinesses in mind',
   },
 }
 
@@ -85,7 +85,7 @@ export const products: Product[] = [
     summary: 'A clay cone that waters by itself, with two screens that show what the soil and the air are doing.',
     description:
       'Push Solo Sense into the soil beside a plant. Its clay cone lets water through as the soil dries and slows it as the soil gets wet, with no moving parts. Two solar-powered screens show the soil and air readings, and the manual tells you what each reading means.',
-    forWho: 'Home growers with pots, beds and small gardens who want to see what the soil needs without a phone or an app.',
+    forWho: 'Made with home growers in mind: pots, beds and small gardens where you want to see what the soil needs without a phone or an app.',
     keyInfo: [
       'Clay cone waters by itself, with no power needed',
       'Soil screen: pH, salinity, temperature, sunlight and nitrates',
@@ -108,7 +108,7 @@ export const products: Product[] = [
     summary: 'Reads the soil and opens its cabled valve when the roots need water.',
     description:
       'Flow Sense checks the soil at root depth and compares each reading with the range that suits your crop. When the soil is too dry it opens the valve, which is connected by cable, and closes it once the soil is moist. Control stays on the unit, so watering carries on if your phone is off. It works with the RootSense app.',
-    forWho: 'Growers with greenhouse tunnels, drip lines, nurseries or small plots who want watering to follow the soil, not the clock.',
+    forWho: 'A natural fit for greenhouse tunnels, drip lines, nurseries and small plots, wherever you want watering to follow the soil, not the clock.',
     keyInfo: [
       'Opens and closes its valve from the soil readings',
       'Valve connected by cable',
@@ -128,7 +128,7 @@ export const products: Product[] = [
     summary: 'Everything Flow Sense does, with a wireless valve link and room for more servos.',
     description:
       'Flow Sense + works like Flow Sense, but it links to its valves over Bluetooth, so there is no cable to run between the unit and the water line. It can also handle more servos than Flow Sense. Control stays on the unit, and it works with the RootSense app.',
-    forWho: 'Growers whose water line is awkward to reach by cable, or who need one unit to work more servos.',
+    forWho: 'A natural fit where the water line is awkward to reach by cable, or where one unit needs to work more servos.',
     keyInfo: [
       'Links to its valves over Bluetooth, with no cable',
       'Handles more servos than Flow Sense',
@@ -149,8 +149,8 @@ export const products: Product[] = [
     price: 12500,
     summary: 'A hub and field receptors that bring soil-led watering to a whole farm.',
     description:
-      'Terra Sense is built for commercial farms. Solar-powered field receptors sit in each irrigation zone and read moisture and temperature at root depth. They report by radio to a hub, which adds pH, salinity, air and light readings and switches the valves and pump starters your farm already has. You keep your drip or pivot system and gain control zone by zone.',
-    forWho: 'Commercial farms and agribusinesses that want zone-by-zone control of the irrigation they already run.',
+      'Terra Sense was made with commercial farms in mind. Solar-powered field receptors sit in each irrigation zone and read moisture and temperature at root depth. They report by radio to a hub, which adds pH, salinity, air and light readings and switches the valves and pump starters your farm already has. You keep your drip or pivot system and gain control zone by zone.',
+    forWho: 'Made with commercial farms and agribusinesses in mind, for zone-by-zone control of the irrigation they already run.',
     keyInfo: [
       'Field receptors read moisture and temperature at root depth',
       'Hub adds pH, salinity, air and light readings',
