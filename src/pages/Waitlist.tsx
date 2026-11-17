@@ -95,7 +95,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
   }
 
   const fieldClass = (hasError: boolean) =>
-    `mt-2 block w-full rounded-2xl border bg-surface px-4 py-3.5 text-base ${hasError ? 'border-[#B42318]' : 'border-line'}`
+    `mt-2 block w-full rounded-2xl border bg-surface px-4 py-3.5 text-base ${hasError ? 'border-[var(--fam-error)]' : 'border-line'}`
 
   return (
     <>
@@ -125,7 +125,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
           className={fieldClass(Boolean(errors.name))}
         />
         {errors.name && (
-          <p id="wl-name-error" className="mt-2 text-sm font-medium text-[#B42318]">
+          <p id="wl-name-error" className="mt-2 text-sm font-medium text-[var(--fam-error)]">
             {errors.name}
           </p>
         )}
@@ -149,7 +149,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
           className={fieldClass(Boolean(errors.email))}
         />
         {errors.email && (
-          <p id="wl-email-error" className="mt-2 text-sm font-medium text-[#B42318]">
+          <p id="wl-email-error" className="mt-2 text-sm font-medium text-[var(--fam-error)]">
             {errors.email}
           </p>
         )}
@@ -161,7 +161,7 @@ function WaitlistForm({ product, selection }: { product: Product; selection: Sel
       </div>
 
       {status === 'failed' && (
-        <p role="alert" className="rounded-2xl border border-[#B42318] px-4 py-3 text-sm font-medium text-[#B42318]">
+        <p role="alert" className="rounded-2xl border border-[var(--fam-error)] px-4 py-3 text-sm font-medium text-[var(--fam-error)]">
           We couldn't save your place just now. Your details are still here, so please try again in a moment.
         </p>
       )}

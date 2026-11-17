@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import FadeIn from '../components/FadeIn'
 import { ProductImage } from '../components/ImageSlot'
 import Layout from '../components/Layout'
@@ -13,21 +13,9 @@ const flow = getProduct('flow-sense')!
 const flowPlus = getProduct('flow-sense-plus')!
 const terra = getProduct('terra-sense')!
 
-function useActiveTheme(initial: ThemeId) {
-  const [active, setActive] = useState<ThemeId>(initial)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.getAttribute('data-theme-section') as ThemeId)
-        }
-      },
-      { rootMargin: '-50% 0px -50% 0px' },
-    )
-    document.querySelectorAll('[data-theme-section]').forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-  return active
+function Blend({ from, to }: { from: ThemeId; to: ThemeId }) {
+  const style = { '--blend-from': `var(--bg-${from})`, '--blend-to': `var(--bg-${to})` } as CSSProperties
+  return <div className="blend" style={style} aria-hidden="true" />
 }
 
 function Screen({ children, className = '', id, labelledBy }: { children: ReactNode; className?: string; id?: string; labelledBy?: string }) {
@@ -138,12 +126,11 @@ const flowComparison: { label: string; flow: ReactNode; plus: ReactNode }[] = [
 
 export default function Home() {
   usePageTitle('RootSense — Know Your Soil')
-  const theme = useActiveTheme('brand')
 
   return (
-    <Layout theme={theme}>
+    <Layout theme="terra">
       {/* Opening */}
-      <div data-theme-section="brand">
+      <div data-family="brand" className="theme-band">
         <Screen labelledBy="home-title" className="items-center text-center">
           <FadeIn immediate>
             <p className="eyebrow">RootSense · Made in Egypt</p>
@@ -198,7 +185,8 @@ export default function Home() {
       </div>
 
       {/* Solo */}
-      <div id="solo" data-theme-section="solo">
+      <Blend from="brand" to="solo" />
+      <div id="solo" data-family="solo" className="theme-band">
         <FamilyIntro family="solo" eyebrow={`Solo Sense · ${formatPrice(solo.price)}`} body={solo.summary + ' No phone, no internet, no wiring.'}>
           <Link to={`/shop/${solo.slug}`} className="btn-primary">
             Preorder Solo Sense
@@ -226,7 +214,8 @@ export default function Home() {
       </div>
 
       {/* Flow */}
-      <div id="flow" data-theme-section="flow">
+      <Blend from="solo" to="flow" />
+      <div id="flow" data-family="flow" className="theme-band">
         <FamilyIntro
           family="flow"
           eyebrow={`Flow Sense · from ${formatPrice(flow.price)}`}
@@ -294,7 +283,8 @@ export default function Home() {
       </div>
 
       {/* Terra */}
-      <div id="terra" data-theme-section="terra">
+      <Blend from="flow" to="terra" />
+      <div id="terra" data-family="terra" className="theme-band">
         <FamilyIntro
           family="terra"
           eyebrow={`Terra Sense · ${formatPrice(terra.price)} · For agribusiness`}
@@ -320,7 +310,7 @@ export default function Home() {
       </div>
 
       {/* Closing */}
-      <div data-theme-section="brand">
+      <div data-family="terra" className="theme-band">
         <Screen labelledBy="closing-title" className="items-center text-center">
           <p className="eyebrow">Shaped by growers</p>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">

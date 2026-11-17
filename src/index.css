@@ -24,61 +24,70 @@
   --olive-housing: #5A6B3A;
 }
 
-/* Family theme tokens. Registered so they interpolate when the active family changes. */
-@property --fam-bg { syntax: '<color>'; inherits: true; initial-value: #FAFAF7; }
-@property --fam-surface { syntax: '<color>'; inherits: true; initial-value: #FFFFFF; }
-@property --fam-ink { syntax: '<color>'; inherits: true; initial-value: #1A1510; }
-@property --fam-muted { syntax: '<color>'; inherits: true; initial-value: #5A5248; }
-@property --fam-accent { syntax: '<color>'; inherits: true; initial-value: #2D5A2D; }
-@property --fam-accent-ink { syntax: '<color>'; inherits: true; initial-value: #FFFFFF; }
-@property --fam-line { syntax: '<color>'; inherits: true; initial-value: rgba(0, 0, 0, 0.1); }
+/* Section colours, light to dark: surface, topsoil, subsoil, deep earth.
+   All are RootSense palette or logo colours, or tints and shades of them. */
+:root {
+  --bg-brand: #FAFAF7;
+  --bg-solo: #F5F0E8;
+  --bg-flow: #85ACA1;
+  --bg-terra: #1C0E06;
+}
 
 [data-family='brand'] {
-  --fam-bg: #FAFAF7;
+  --fam-bg: var(--bg-brand);
   --fam-surface: #FFFFFF;
   --fam-ink: #1A1510;
   --fam-muted: #5A5248;
   --fam-accent: #2D5A2D;
   --fam-accent-ink: #FFFFFF;
-  --fam-line: rgba(0, 0, 0, 0.1);
+  --fam-line: rgba(26, 21, 16, 0.1);
+  --fam-error: #B42318;
 }
 
 [data-family='solo'] {
-  --fam-bg: #F3ECE1;
-  --fam-surface: #FFFDF9;
-  --fam-ink: #2A1F14;
-  --fam-muted: #6A5642;
-  --fam-accent: #7A4A22;
+  --fam-bg: var(--bg-solo);
+  --fam-surface: #FFFFFF;
+  --fam-ink: #1A1510;
+  --fam-muted: #5A5248;
+  --fam-accent: #5C3A1E;
   --fam-accent-ink: #FFFFFF;
-  --fam-line: rgba(42, 31, 20, 0.12);
+  --fam-line: rgba(26, 21, 16, 0.12);
+  --fam-error: #B42318;
 }
 
 [data-family='flow'] {
-  --fam-bg: #E5EFEC;
-  --fam-surface: #FFFFFF;
-  --fam-ink: #0E2626;
-  --fam-muted: #3E5C5A;
-  --fam-accent: #17605B;
+  --fam-bg: var(--bg-flow);
+  --fam-surface: #E5EDEB;
+  --fam-ink: #0B2418;
+  --fam-muted: #1B3D33;
+  --fam-accent: #1B3A1B;
   --fam-accent-ink: #FFFFFF;
-  --fam-line: rgba(14, 38, 38, 0.12);
+  --fam-line: rgba(11, 36, 24, 0.2);
+  --fam-error: #63130D;
 }
 
 [data-family='terra'] {
-  --fam-bg: #1B1915;
-  --fam-surface: #26231D;
-  --fam-ink: #F2ECDF;
-  --fam-muted: #BDB29D;
-  --fam-accent: #D2AE63;
-  --fam-accent-ink: #1B1915;
-  --fam-line: rgba(255, 255, 255, 0.14);
+  --fam-bg: var(--bg-terra);
+  --fam-surface: #2A1509;
+  --fam-ink: #F5F0E8;
+  --fam-muted: #BAB5AB;
+  --fam-accent: #D4956A;
+  --fam-accent-ink: #1C0E06;
+  --fam-line: rgba(245, 240, 232, 0.14);
+  --fam-error: #DD9C97;
 }
 
-.family-scope {
+.family-scope,
+.theme-band {
   background-color: var(--fam-bg);
   color: var(--fam-ink);
-  transition:
-    --fam-bg 0.8s ease, --fam-surface 0.8s ease, --fam-ink 0.8s ease, --fam-muted 0.8s ease,
-    --fam-accent 0.8s ease, --fam-accent-ink 0.8s ease, --fam-line 0.8s ease;
+}
+
+/* Short colour fade between two sections. It never carries text. */
+.blend {
+  height: clamp(96px, 18vh, 200px);
+  background: linear-gradient(to bottom, var(--blend-from), var(--blend-to));
+  background: linear-gradient(in oklab to bottom, var(--blend-from), var(--blend-to));
 }
 
 @layer base {

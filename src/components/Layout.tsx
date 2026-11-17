@@ -27,9 +27,11 @@ function Nav() {
 
   return (
     <header
+      data-family="brand"
       className="sticky top-0 z-50 border-b border-line"
       style={{
-        background: 'color-mix(in srgb, var(--fam-bg) 88%, transparent)',
+        color: 'var(--fam-ink)',
+        background: 'color-mix(in srgb, var(--fam-bg) 92%, transparent)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
       }}

@@ -389,7 +389,7 @@ export default function ProductExplodeSection({ breakdown }: { breakdown: Breakd
             <path d="M15 18l-6-6 6-6" />
           </svg>
         </button>
-        <span className="font-dm text-sm" style={{ color: 'var(--text-tertiary)' }}>
+        <span className="font-dm text-sm" style={{ color: 'var(--fam-muted)' }}>
           {activeState + 1} / {parts.length}
         </span>
         <button
