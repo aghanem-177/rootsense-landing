@@ -93,6 +93,11 @@
   color: var(--fam-ink);
 }
 
+/* Elements that slide in while animating must never cause a sideways scroll on phones. */
+.family-scope {
+  overflow-x: clip;
+}
+
 /* Home opening: a ground line, then soil that settles into Solo's cream. */
 .ground {
   --soil-top: color-mix(in oklab, var(--sand), var(--brown-light) 14%);
@@ -133,46 +138,6 @@
   top: calc(17.5% + 1.5px);
   height: 14px;
   background: linear-gradient(to bottom, rgba(92, 58, 30, 0.08), transparent);
-}
-
-.ground-art {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 1;
-  height: 100%;
-  transform: translateX(-50%);
-  overflow: visible;
-}
-
-.ground-root {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: root-draw 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0.2s) forwards;
-}
-
-.ground-fade {
-  opacity: 0;
-  animation: soil-fade 0.8s ease-out var(--d, 0.6s) forwards;
-}
-
-.ground-leaf {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: leaf-up 0.7s cubic-bezier(0.3, 0.6, 0.3, 1) 0.1s both;
-}
-
-@keyframes root-draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes soil-fade {
-  to { opacity: 1; }
-}
-
-@keyframes leaf-up {
-  from { transform: scale(0.4); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
 /* Fade between two sections. Eased at both ends so there is no visible edge. It never carries text. */
@@ -334,14 +299,15 @@
     padding: 0 0.5rem 0 1.5rem;
     border: 1.5px solid var(--brown-dark);
     border-radius: 999px;
-    background: var(--preorder);
+    background: linear-gradient(180deg, #AE5936, #9E4E2F);
     color: #FFFFFF;
     font-family: 'Playfair Display', serif;
-    font-weight: 800;
-    font-size: clamp(0.8rem, 2.4vw, 0.95rem);
-    letter-spacing: 0.07em;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+    letter-spacing: 0.035em;
     text-transform: uppercase;
-    box-shadow: 0 8px 20px -10px rgba(92, 58, 30, 0.7);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 10px 24px -12px rgba(92, 58, 30, 0.75);
     cursor: pointer;
     transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   }
@@ -359,7 +325,7 @@
   }
 
   .btn-preorder:hover:not(:disabled) {
-    background: var(--preorder-hover);
+    background: linear-gradient(180deg, #9E4E2F, #8A4329);
     transform: translateY(-2px);
     box-shadow: 0 12px 24px -10px rgba(92, 58, 30, 0.8);
   }
@@ -380,6 +346,7 @@
 
   .btn-preorder:disabled {
     padding: 0 1.5rem;
+    font-style: normal;
     border: 1.5px dashed var(--text-tertiary);
     background: var(--sand);
     color: var(--text-secondary);
@@ -538,14 +505,6 @@
   .btn-preorder:active:not(:disabled),
   .btn-preorder:hover:not(:disabled) .btn-preorder-chip {
     transform: none;
-  }
-
-  .ground-root,
-  .ground-leaf,
-  .ground-fade {
-    animation: none;
-    stroke-dashoffset: 0;
-    opacity: 1;
   }
 
   *, *::before, *::after {

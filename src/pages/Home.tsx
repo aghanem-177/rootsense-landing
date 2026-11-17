@@ -62,18 +62,36 @@ function Lineup({ items }: { items: LineupItem[] }) {
   )
 }
 
+function Feature({ item, points }: { item: LineupItem; points: { title: string; body: string }[] }) {
+  return (
+    <div className="mx-auto mt-14 grid w-full max-w-[920px] items-center gap-8 text-left md:grid-cols-[5fr_7fr] md:gap-14">
+      <div className="mx-auto w-full max-w-[340px]">
+        <ProductImage product={item.product} colour={item.colour} />
+      </div>
+      <dl className="space-y-7">
+        {points.map((point) => (
+          <div key={point.title} className="border-t border-line pt-5">
+            <dt className="eyebrow">{point.title}</dt>
+            <dd className="mt-2 text-lg leading-relaxed">{point.body}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )
+}
+
 function FamilyIntro({
   family,
   eyebrow,
   body,
   children,
-  lineup,
+  media,
 }: {
   family: FamilyId
   eyebrow: string
   body: string
   children: ReactNode
-  lineup: LineupItem[]
+  media: ReactNode
 }) {
   const fam = families[family]
   return (
@@ -97,7 +115,7 @@ function FamilyIntro({
         <div className="mt-9 flex flex-wrap justify-center gap-3">{children}</div>
       </FadeIn>
       <FadeIn delay={0.25} className="w-full">
-        <Lineup items={lineup} />
+        {media}
       </FadeIn>
     </Screen>
   )
@@ -180,10 +198,25 @@ export default function Home() {
           family="solo"
           eyebrow={`Solo Sense · ${formatPrice(solo.price)}`}
           body={solo.summary + ' No phone, no internet, no wiring.'}
-          lineup={[
-            { product: solo, colour: 'camel-brown', caption: 'Camel Brown' },
-            { product: solo, colour: 'onyx-black', caption: 'Onyx Black' },
-          ]}
+          media={
+            <Feature
+              item={{ product: solo, colour: 'onyx-black' }}
+              points={[
+                {
+                  title: 'Where it fits',
+                  body: 'Made with pots, home gardens and single beds in mind. It goes into the soil beside the plant, with nothing to install.',
+                },
+                {
+                  title: 'What it runs on',
+                  body: 'Solar panels charge its screens, and the clay cone waters with no power at all. It needs no phone, internet or mains supply.',
+                },
+                {
+                  title: 'How it looks',
+                  body: 'A slim stake about 30 cm long and 380 g, in Onyx Black or Camel Brown, with a UV-resistant case made for sun, rain and dust.',
+                },
+              ]}
+            />
+          }
         >
           <PreorderLink to={`/shop/${solo.slug}`}>Preorder Solo Sense</PreorderLink>
           <a href="#solo-inside" className="btn-secondary">
@@ -192,12 +225,26 @@ export default function Home() {
         </FamilyIntro>
 
         <Screen labelledBy="solo-cone">
-          <SectionHeading id="solo-cone" eyebrow="How it waters" title="Water that knows when to stop." />
+          <SectionHeading
+            id="solo-cone"
+            eyebrow="How it waters"
+            title="Water that knows when to stop."
+            intro="The clay cone works on water potential. Water always moves from where its potential is higher to where it is lower, and the cone uses that to water only when the soil is drying."
+          />
           <Steps
             steps={[
-              { title: 'Dry soil pulls', body: 'As the soil dries, it draws water out through the wall of the clay cone.' },
-              { title: 'Wet soil lets go', body: 'As the soil gets wetter, the pull gets weaker and the flow slows down.' },
-              { title: 'Nothing to switch', body: 'The cone does this by itself, with no moving parts and no power.' },
+              {
+                title: 'Matric suction',
+                body: 'As soil dries, the water left in it is held more tightly in the narrowing spaces between particles, so its matric potential falls. The water-filled cone stays near zero, which sets up a gradient from the cone into the soil.',
+              },
+              {
+                title: 'Flow through the ceramic',
+                body: 'The fired clay wall has pores about 1 to 3 micrometres across. Capillary forces hold water in them, and it passes through at a rate set by the potential gradient and the conductivity of the clay, as Darcy\'s law describes.',
+              },
+              {
+                title: 'Self-regulation',
+                body: 'As the surrounding soil wets towards field capacity, its potential rises towards the cone\'s. The gradient shrinks and the flow slows almost to a stop, with no valve, sensor or power involved.',
+              },
             ]}
           />
         </Screen>
@@ -214,10 +261,14 @@ export default function Home() {
           family="flow"
           eyebrow={`Flow Sense · from ${formatPrice(flow.price)}`}
           body="Flow reads the soil at the root and opens the water only when the roots need it. Control stays on the unit, so watering carries on if your phone is off."
-          lineup={[
-            { product: flow, colour: 'camel-brown', caption: 'Flow Sense' },
-            { product: flowPlus, colour: 'onyx-black', caption: 'Flow Sense +' },
-          ]}
+          media={
+            <Lineup
+              items={[
+                { product: flow, colour: 'camel-brown', caption: 'Flow Sense' },
+                { product: flowPlus, colour: 'onyx-black', caption: 'Flow Sense +' },
+              ]}
+            />
+          }
         >
           <PreorderLink to={`/shop/${flow.slug}`}>Preorder Flow Sense</PreorderLink>
           <PreorderLink to={`/shop/${flowPlus.slug}`}>Preorder Flow Sense +</PreorderLink>
@@ -281,7 +332,7 @@ export default function Home() {
           family="terra"
           eyebrow={`Terra Sense · ${formatPrice(terra.price)} · Farm scale`}
           body={terra.summary + ' Made with commercial farms in mind.'}
-          lineup={[{ product: terra }]}
+          media={<Lineup items={[{ product: terra }]} />}
         >
           <PreorderLink to={`/shop/${terra.slug}`}>Preorder Terra Sense</PreorderLink>
         </FamilyIntro>
